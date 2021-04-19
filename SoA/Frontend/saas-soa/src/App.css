@@ -1,0 +1,419 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com/
+Twitter: @rich_clark
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/ change colours to suit your needs / ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/ change colours to suit your needs / mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/ change border colour to suit your needs */ hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+/*
+My Code
+Author: Philip Montesantos
+Ece NTUA
+el17175
+*/
+
+
+
+/* HEADER */
+
+header {
+  background-color: #fff;
+  width: 100%;
+  height: 80px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+header .header-brand {
+  width: 142px;
+  height: 80px;
+  margin: 0px 0;
+  align: left;
+  padding: 0px 20px 0px 25px;
+  float: left;
+}
+
+header nav ul {
+  margin: 25px 0px;
+  float: left;
+}
+
+header nav ul li {
+  display: inline-block;
+  float: left;
+  list-style: none;
+  padding: 0 16px;
+}
+
+header nav ul li a {
+  font-family: Catamaran;
+  font-size: 25px;
+  color: #111;
+  line-height: 60px;
+  padding-right: 15px;
+}
+
+
+
+/* BUTTONS */
+
+.login {
+  position: absolute;
+  padding-right: 140px;
+  right: 0;
+}
+
+.login button{
+  border: none;
+  outline: none;
+  height: 35px;
+  width: 80px;
+  color: #f3f3f3;
+  background: #35312e;
+  font-family: Catamaran;
+  font-size: 15px;
+  border-radius: 5px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.login button:hover{
+  background: #4f4b48;
+  cursor: pointer;
+}
+
+.sign {
+  position: absolute;
+  padding-right: 30px;
+  right: 0;
+}
+
+.sign button{
+  border: none;
+  outline: none;
+  height: 35px;
+  width: 80px;
+  color: #f3f3f3;
+  background: #35312e;
+  font-family: Catamaran;
+  font-size: 15px;
+  border-radius: 5px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.sign button:hover{
+  background: #4f4b48;
+  cursor: pointer;
+}
+
+/* SEARCH BOXES */
+
+.search{
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  outline: none;
+  height:35px;
+  width: 250px;
+  font-family: Catamaran;
+  font-size: 15px;
+  color: #111;
+}
+
+.searchbar{
+}
+
+/* BANNER */
+
+.blank-banner{
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: table;
+}
+
+.vartical-center {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* FOOTER */
+
+.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+footer {
+  width: calc(100% - 80px);
+  padding: 40px 40px;
+  background-color: #111;
+  overflow: hidden;
+}
+
+footer ul {
+  width: fit-content;
+  float: left;
+  padding-left: 20px;
+}
+
+footer ul li {
+  display: block;
+  list-style: none;
+}
+
+footer ul li a {
+  font-family: Catamaran;
+  font-size: 15px;
+  color: #fff;
+  line-height: 32px;
+  text-decoration: none;
+}
+
+footer ul li a:hover {
+  color: #c2c2c2;
+
+}
+
+.footer-sm {
+  width: 40px;
+  float: right;
+}
+
+/* LOGIN */
+
+.loginbox{
+  width: 350px;
+  height: 350px;
+  background: #fff;
+  color: #fff;
+  margin: auto;
+  margin-top: 200px;
+  margin-bottom: 100px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.email{
+  margin: 0;
+  padding: 0;
+  font-family: Catamaran;
+  font-size: 18px;
+  color: #111;
+}
+
+.loginbox input{
+  width: 200px;
+  margin-bottom: 35px;
+}
+
+.input-field{
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  outline: none;
+  height:40px;
+  width: 200px;
+  font-family: Catamaran;
+  font-size: 15px;
+  color: #111;
+}
+
+  .loginbox button{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 100px;
+    color: #f3f3f3;
+    background: #35312e;
+    font-family: Catamaran;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-top: -15px;
+    margin-bottom: 5px;
+  }
+
+  .test-button{
+    padding-top: 10px;
+  }
+
+  .loginbox button:hover{
+    background: #4f4b48;
+    cursor: pointer;
+  }
+
+  .loginbox a{
+    text-decoration: none;
+    font-family: Catamaran;
+    color: #111;
+    margin-top: 5px;
+  }
+
+  .loginbox a:hover{
+    color: #c2c2c2;
+  }
+
+.loginbox form{
+  padding-top: 45px;
+  padding-left: 75px;
+  align-content: center;
+}
+
+.login-error{
+  padding-top: 15px;
+  text-decoration: none;
+  font-family: Catamaran;
+  color: #FF0000;
+}
+
+/* SIGN UP */
+
+.signup-box{
+  width: 350px;
+  height: 500px;
+  background: #fff;
+  color: #fff;
+  margin: auto;
+  margin-top: 200px;
+  margin-bottom: 100px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.signup-box input{
+  width: 200px;
+  margin-bottom: 35px;
+}
+
+
+
+  .signup-box button{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 100px;
+    color: #f3f3f3;
+    background: #35312e;
+    font-family: Catamaran;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-top: -15px;
+    margin-bottom: 5px;
+  }
+
+
+  .signup-box button:hover{
+    background: #4f4b48;
+    cursor: pointer;
+  }
+
+  .signup-box a{
+    text-decoration: none;
+    font-family: Catamaran;
+    color: #111;
+    margin-top: 5px;
+  }
+
+  .signup-box a:hover{
+    color: #c2c2c2;
+  }
+
+.signup-box form{
+  padding-top: 45px;
+  padding-left: 75px;
+  align-content: center;
+}
