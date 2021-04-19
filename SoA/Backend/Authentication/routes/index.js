@@ -1,18 +1,25 @@
+const createError = require('http-errors');
 const express = require('express');
 const router = express.Router();
 
-// POST signin
-router.post('/signin', function(req, res, next) {
-  const username = req.body['username'];
-  const password = req.body['password'];
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
+passport.use('signin', new LocalStrategy(function (username, password, done){
   if ( username !== 'typo' || password !== 'something'){
-    next(createError(401));
-  }else{
-    res.json({
-      user: username,
-      timestamp: Date.now()
-    })
+    return done(null, false);
   }
+  return done(null, {username: username});
+}));
+
+// POST signin
+router.post('/signin',
+    passport.authenticate('signin', {session: false}),
+    function(req, res, next) {
+    res.json({
+      user: req.user,
+      timestamp: Date.now()
+    });
 });
 
 module.exports = router;
