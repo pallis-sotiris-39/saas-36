@@ -4,9 +4,10 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 function Home() {
   return (
       <main>
-      <section class="blank-banner">
-        <div class="vartical-center">
-
+      <section class="image-banner">
+        <div class="home-page">
+          <h1>A WHOLE NEW WORLD <br/> OF PROGRAMMING.</h1>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
         </div>
 
       </section>
