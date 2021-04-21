@@ -42,6 +42,7 @@ router.post('/signin',
 router.get('/whoami',
     passport.authenticate('token', { session: false}),
     function (req,res, next) {
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
         res.json({user: req.user});
     }
 );
