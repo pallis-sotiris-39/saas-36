@@ -6,6 +6,9 @@ import Footer from './footer';
 import Home from './home';
 import Login from './login';
 import Signup from './signup';
+import Ask from './ask';
+import Forgot from './forgot';
+import Profile from './profile';
 import './App.css';
 
 class App extends React.Component {
@@ -23,6 +26,9 @@ class App extends React.Component {
             <Route path="/header" component={Header}/>
             <Route path="/login" component={Login}/>
             <Route path="/signup" component={Signup}/>
+            <Route path="/AmA" component={Ask}/>
+            <Route path="/recover" component={Forgot}/>
+            <Route path="/profile" component={Profile}/>
           </Switch>
           <Footer />
         </div>

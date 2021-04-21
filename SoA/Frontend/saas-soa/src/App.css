@@ -109,9 +109,12 @@ el17175
 /* HEADER */
 
 header {
-  background-color: #fff;
+  background-color: #111;
   width: 100%;
   height: 80px;
+}
+
+.shadow-header{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -125,7 +128,7 @@ header .header-brand {
 }
 
 header nav ul {
-  margin: 25px 0px;
+  margin: 20px 0px;
   float: left;
 }
 
@@ -150,7 +153,7 @@ header nav ul li a {
 
 .login {
   position: absolute;
-  padding-right: 140px;
+  padding-right: 120px;
   right: 0;
 }
 
@@ -164,7 +167,7 @@ header nav ul li a {
   font-family: Catamaran;
   font-size: 15px;
   border-radius: 5px;
-  margin-top: 0px;
+  margin-top: 5px;
   margin-bottom: 5px;
 }
 
@@ -189,7 +192,7 @@ header nav ul li a {
   font-family: Catamaran;
   font-size: 15px;
   border-radius: 5px;
-  margin-top: 0px;
+  margin-top: 5px;
   margin-bottom: 5px;
 }
 
@@ -198,18 +201,91 @@ header nav ul li a {
   cursor: pointer;
 }
 
+.add {
+  position: absolute;
+  padding-right: 210px;
+  right: 0;
+}
+
+.add button{
+  border: none;
+  outline: none;
+  height: 35px;
+  width: 35px;
+  color: #f3f3f3;
+  background: #35312e;
+  font-family: Catamaran;
+  font-size: 15px;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.add button:hover{
+  background: #4f4b48;
+  cursor: pointer;
+}
+
+/* HOME */
+
+.home-page{
+  padding-top: 250px;
+  padding-left: 100px;
+  animation: glitch 1s linear infinite;
+}
+
+.home-page h1{
+  font-family: Arvo;
+  color: #f3f3f3;
+  font-size: 50px;
+  text-shadow: 2px 2px 3px #5bbdfe;
+
+}
+
+.home-page {
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
 /* SEARCH BOXES */
 
 .search{
   border: none;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #35312e;
   background: transparent;
   outline: none;
   height:35px;
   width: 250px;
   font-family: Catamaran;
   font-size: 15px;
-  color: #111;
+  color: #fff;
 }
 
 .searchbar{
@@ -229,6 +305,26 @@ header nav ul li a {
 .vartical-center {
   display: table-cell;
   vertical-align: middle;
+}
+
+.image-banner{
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-image: url(images/galaxy.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: table;
+}
+
+.blur-banner{
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-image: url(images/galaxy-blur.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: table;
 }
 
 /* FOOTER */
@@ -278,11 +374,11 @@ footer ul li a:hover {
 
 .loginbox{
   width: 350px;
-  height: 350px;
-  background: #fff;
-  color: #fff;
+  height: 375px;
+  background: #111;
+  color: #111;
   margin: auto;
-  margin-top: 200px;
+  margin-top: 250px;
   margin-bottom: 100px;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -293,24 +389,24 @@ footer ul li a:hover {
   padding: 0;
   font-family: Catamaran;
   font-size: 18px;
-  color: #111;
+  color: #fff;
 }
 
 .loginbox input{
   width: 200px;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
-.input-field{
+.input{
   border: none;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #35312e;
   background: transparent;
   outline: none;
-  height:40px;
+  height: 40px;
   width: 200px;
   font-family: Catamaran;
   font-size: 15px;
-  color: #111;
+  color: #fff;
 }
 
   .loginbox button{
@@ -339,7 +435,7 @@ footer ul li a:hover {
   .loginbox a{
     text-decoration: none;
     font-family: Catamaran;
-    color: #111;
+    color: #f3f3f3;
     margin-top: 5px;
   }
 
@@ -360,13 +456,224 @@ footer ul li a:hover {
   color: #FF0000;
 }
 
+.second-text{
+  padding-top: 12px;
+}
+
+/* Recovery */
+.recoverybox{
+  width: 350px;
+  height: 350px;
+  background: #111;
+  color: #111;
+  margin: auto;
+  margin-top: 250px;
+  margin-bottom: 100px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.recoverybox input{
+  width: 200px;
+  margin-bottom: 30px;
+}
+
+
+  .recoverybox button{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 100px;
+    color: #f3f3f3;
+    background: #35312e;
+    font-family: Catamaran;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-top: -15px;
+    margin-bottom: 5px;
+  }
+
+
+  .recoverybox button:hover{
+    background: #4f4b48;
+    cursor: pointer;
+  }
+
+  .recoverybox a{
+    text-decoration: none;
+    font-family: Catamaran;
+    color: #f3f3f3;
+    margin-top: 5px;
+  }
+
+  .recoverybox a:hover{
+    color: #c2c2c2;
+  }
+
+.recoverybox form{
+  padding-top: 45px;
+  padding-left: 75px;
+  align-content: center;
+}
+
+.space{
+  padding-bottom: 40px;
+}
+
+
+/* Ask */
+
+.addbox{
+  width: 1000px;
+  height: 700px;
+  background: #111;
+  color: #111;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.addbox form{
+  padding-top: 45px;
+  padding-left: 100px;
+  align-content: center;
+}
+
+.title{
+  border: 1px solid #35312e;
+  border-radius: 5px;
+  background: transparent;
+  outline: none;
+  height:40px;
+  width: 400px;
+  font-family: Catamaran;
+  font-size: 15px;
+  color: #fff;
+}
+.addbox input{
+  margin-bottom: 30px;
+  padding-left: 5px;
+}
+
+.addbox p{
+  padding-bottom: 15px;
+}
+
+.body{
+  border: 1px solid #35312e;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
+  background: transparent;
+  outline: none;
+  width: 800px;
+  font-family: Catamaran;
+  font-size: 15px;
+  color: #fff;
+}
+
+.bodymass{
+  padding-bottom: 30px;
+}
+
+.addbox button{
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 100px;
+  color: #f3f3f3;
+  background: #35312e;
+  font-family: Catamaran;
+  font-size: 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+
+.addbox button:hover{
+  background: #4f4b48;
+  cursor: pointer;
+}
+
+.desc{
+  text-decoration: none;
+  font-family: Catamaran;
+  color: #35312e;
+  margin-top: -15px;
+}
+
+/* PROFILE */
+
+
+.profilebox{
+  width: 300px;
+  height: 400px;
+  background: #111;
+  color: #111;
+  margin-left: 100px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profilebox input{
+  width: 200px;
+  margin-bottom: 30px;
+}
+
+
+
+  .profilebox button{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 100px;
+    color: #f3f3f3;
+    background: #35312e;
+    font-family: Catamaran;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-top: -15px;
+    margin-bottom: 5px;
+  }
+
+
+  .profilebox button:hover{
+    background: #4f4b48;
+    cursor: pointer;
+  }
+
+  .profilebox a{
+    text-decoration: none;
+    font-family: Catamaran;
+    color: #f3f3f3;
+    margin-top: 5px;
+  }
+
+  .profilebox a:hover{
+    color: #c2c2c2;
+  }
+
+.profilebox form{
+  padding-top: 45px;
+  padding-left: 75px;
+  align-content: center;
+}
+
+
+
 /* SIGN UP */
 
 .signup-box{
   width: 350px;
-  height: 500px;
-  background: #fff;
-  color: #fff;
+  height: 540px;
+  background: #111;
+  color: #111;
   margin: auto;
   margin-top: 200px;
   margin-bottom: 100px;
@@ -376,7 +683,7 @@ footer ul li a:hover {
 
 .signup-box input{
   width: 200px;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 
@@ -404,7 +711,7 @@ footer ul li a:hover {
   .signup-box a{
     text-decoration: none;
     font-family: Catamaran;
-    color: #111;
+    color: #f3f3f3;
     margin-top: 5px;
   }
 

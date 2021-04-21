@@ -7,7 +7,7 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import { Redirect, useHistory } from "react-router-dom";
 import { withCookies, Cookies } from 'react-cookie';
 
-class Login extends React.Component {
+class Forgot extends React.Component {
 
   constructor(props){
     console.log(document.cookie);
@@ -46,7 +46,7 @@ class Login extends React.Component {
 
       try{
 
-          let res = await fetch(`http://localhost:3301/signin?username=${this.state.username}&password=${this.state.password}`, {
+          let res = await fetch(`http://localhost:8765/signin?username=${this.state.username}&password=${this.state.password}`, {
               mode: 'cors',
               method: 'post',
               headers:{
@@ -147,41 +147,28 @@ render(){
         return (
             <main>
               <section className="blur-banner">
-                  <div className="loginbox">
+                  <div className="recoverybox">
                     <form>
-                      <p className="email">Username</p>
+                      <div className = "space">
+                      <p className="email"> Forgot your password or <br/>  having trouble logging in? <br/> Enter your email and we’ll  <br/>send you a recovery link.</p>
+                      </div>
+                      <p className="email">Email</p>
+
                       <InputField
                           className="input-field"
                           type='text'
                           value={this.state.username ? this.state.username: ''}
                           onChange={(val) => this.setInputValue('username', val)}
                       />
-
-                      <p className="email">Password</p>
-                      <InputField
-                          className="input-field"
-                          type="password"
-                          value={this.state.password ? this.state.password: ''}
-                          onChange={(val) => this.setInputValue('password', val)}
-                      />
-
                       <br/>
                       <SubmitButton
-                          text='Log in'
+                          text='Send'
                           className = 'test-button'
                           disabled={this.state.buttonDisabled}
                           onClick={() => this.doLogin()}
                       />
-                      <br/>
-                      <Link to = "/recover">
-                        <a href="#">Forgot your password?</a>
-                      </Link>
-                      <br/>
-                      <div className = 'second-text'>
-                        <Link to = "/signup">
-                          <a href="#" >Don't have an account?</a>
-                        </Link>
-                      </div>
+
+
                     </form>
                   </div>
               </section>
@@ -189,4 +176,4 @@ render(){
         );
 }
 }
-export default observer(Login);
+export default observer(Forgot);
