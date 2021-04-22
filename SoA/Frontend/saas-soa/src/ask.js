@@ -46,8 +46,7 @@ class Ask extends React.Component{
           let res = await fetch(`http://localhost:3002/question`, {
               method: 'post',
               headers:{
-                'Content-Type': 'application/json',
-                'Accept':'*/*'
+                'Content-Type': 'application/json'
               },
               body:{
                 "title": `${this.state.title}`,
