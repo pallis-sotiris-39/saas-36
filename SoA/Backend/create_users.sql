@@ -1,0 +1,2 @@
+insert into users values(DEFAULT, 'John', 'Doe', 'john_doe', 'john_doe@doemail.john', crypt('secret', gen_salt('bf')));
+insert into users values(DEFAULT, 'Ntina', 'Skarifou', 'ntina_skarifou', 'ntina_skarifou@doemail.john', crypt('hehexd', gen_salt('bf')));
