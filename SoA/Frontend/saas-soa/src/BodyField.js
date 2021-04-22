@@ -1,15 +1,15 @@
 import React from 'react';
 
-class TitleField extends React.Component{
+class BodyField extends React.Component{
 
       render(){
           return(
               <div className="inputField">
 
-                  <input
-                      className='title'
-                      placeholder={this.props.placeholder}
-                      type={this.props.type}
+                  <textarea
+                      className = "body"
+                      cols="50"
+                      rows="10"
                       value={this.props.value}
                       onChange={(e) => this.props.onChange(e.target.value)}
                   />
@@ -21,4 +21,4 @@ class TitleField extends React.Component{
 
 }
 
-export default TitleField;
+export default BodyField;

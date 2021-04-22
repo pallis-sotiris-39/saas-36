@@ -553,9 +553,13 @@ footer ul li a:hover {
   font-size: 15px;
   color: #fff;
 }
+::placeholder{
+  color: #606060;
+}
+
 .addbox input{
   margin-bottom: 30px;
-  padding-left: 5px;
+  padding-left: 10px;
 }
 
 .addbox p{
@@ -565,8 +569,8 @@ footer ul li a:hover {
 .body{
   border: 1px solid #35312e;
   border-radius: 5px;
-  padding-left: 5px;
-  padding-top: 5px;
+  padding-left: 10px;
+  padding-top: 10px;
   background: transparent;
   outline: none;
   width: 800px;
@@ -602,8 +606,12 @@ footer ul li a:hover {
 .desc{
   text-decoration: none;
   font-family: Catamaran;
-  color: #35312e;
+  color: #606060;
   margin-top: -15px;
+}
+
+.form-button{
+  padding-left: 100px;
 }
 
 /* PROFILE */
