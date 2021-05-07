@@ -1,34 +1,50 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
 import { Question } from './entities/question.entity';
+import { InjectEntityManager } from "@nestjs/typeorm";
+import { EntityManager } from "typeorm";
+import { User } from "../users/entities/user.entity";
 
 @Injectable()
 export class QuestionService {
-  private readonly questions: Question[] = [];
+  constructor(@InjectEntityManager() private manager: EntityManager) {}
 
-  create(createQuestionDto: CreateQuestionDto) {
-    const id = this.questions.length + 1;
-    const quest = { id: id, ...createQuestionDto };
-    this.questions.push(quest);
-    return quest;
+  async create(createQuestionDto: CreateQuestionDto) : Promise<Question> {
+    return this.manager.transaction(async manager => {
+      const userID = createQuestionDto.user.id;
+      if(!userID) throw new BadRequestException('User id missing');
+      const user = await this.manager.findOne(User, userID);
+      if(!user) throw new NotFoundException('User with id: ${userId} not found');
+      const question = await this.manager.create(Question, createQuestionDto);
+      return this.manager.save(question);
+    });
   }
 
-  findAll() {
-    return this.questions;
+  async findAll() : Promise<Question[]> {
+    return this.manager.find(Question);
   }
 
-  findOne(id: number) {
-    const quest = this.questions.find((quest) => quest.id == id);
-    if (!quest) throw new NotFoundException('Question ${id} not found.');
-    return quest;
+  async findOne(id: number) : Promise<Question> {
+    const question = await this.manager.findOne(Question, id, {relations: ["user", "answers"]})
+    if (!question) throw new NotFoundException('Question with id: ${id} not found')
+    return question;
   }
 
-  update(id: number, updateQuestionDto: UpdateQuestionDto) {
-    return `This action updates a #${id} question`;
+  async update(id: number, updateQuestionDto: UpdateQuestionDto) : Promise<Question> {
+    return this.manager.transaction(async manager => {
+      const question = await manager.findOne(Question, id, {relations: ["answers"]})
+      if (!question) throw new NotFoundException('Question with id: ${id} not found')
+      manager.merge(Question, question, updateQuestionDto);
+      return manager.save(question);
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} question`;
+  async remove(id: number) : Promise<void>{
+    return this.manager.transaction(async manager => {
+      const question = await manager.findOne(Question, id, {relations: ["answers"]})
+      if (!question) throw new NotFoundException('Question with id: ${id} not found')
+      await manager.delete(Question, id);
+    });
   }
 }

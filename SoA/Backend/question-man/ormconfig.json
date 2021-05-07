@@ -1,0 +1,9 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "Typo",
+  "password": "saas-36",
+  "database": "saas-36",
+  "entities": ["dist/**/*.entity{.ts,.js}"]
+}
