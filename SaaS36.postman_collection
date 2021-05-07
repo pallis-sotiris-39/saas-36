@@ -1,0 +1,585 @@
+{
+	"info": {
+		"_postman_id": "1aa81333-aa22-4243-957c-a0983040dcf5",
+		"name": "SaaS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign in Ntina",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjdXJlbjEiLCJleHAiOjE2MTU3NDY4MTR9.5OssAU9cIaa5SgyBzsd0wYf1vCRTRNeOJcCLhmLOLoAMNLrU33bjuWYRJEG3jAVsVObHsyg36p9ztc8OdVNJzg",
+						"type": "text"
+					},
+					{
+						"key": "Expect",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "ntinaskarifou",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "ntinapassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3001/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign in Sotiris",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjdXJlbjEiLCJleHAiOjE2MTU3NDY4MTR9.5OssAU9cIaa5SgyBzsd0wYf1vCRTRNeOJcCLhmLOLoAMNLrU33bjuWYRJEG3jAVsVObHsyg36p9ztc8OdVNJzg",
+						"type": "text"
+					},
+					{
+						"key": "Expect",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "ntinaskarifou",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "ntinapassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3001/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign up Ntina",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjdXJlbjEiLCJleHAiOjE2MTU3NDY4MTR9.5OssAU9cIaa5SgyBzsd0wYf1vCRTRNeOJcCLhmLOLoAMNLrU33bjuWYRJEG3jAVsVObHsyg36p9ztc8OdVNJzg",
+						"type": "text"
+					},
+					{
+						"key": "Expect",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\" : \"Ntina\",\r\n    \"last_name\" : \"Skarifou\",\r\n    \"birthday\" : \"12/12/1999\",\r\n    \"email\" : \"ntinaki@tsourekaki.ska\",\r\n    \"username\" : \"ntinaskarifou\",\r\n    \"password\" : \"ntinapassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign up Sotiris",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjdXJlbjEiLCJleHAiOjE2MTU3NDY4MTR9.5OssAU9cIaa5SgyBzsd0wYf1vCRTRNeOJcCLhmLOLoAMNLrU33bjuWYRJEG3jAVsVObHsyg36p9ztc8OdVNJzg",
+						"type": "text"
+					},
+					{
+						"key": "Expect",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\" : \"Ntina\",\r\n    \"last_name\" : \"Skarifou\",\r\n    \"birthday\" : \"12/12/1999\",\r\n    \"email\" : \"ntinaki@tsourekaki.ska\",\r\n    \"username\" : \"ntinaskarifou\",\r\n    \"password\" : \"ntinapassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign in Wrong Username",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjdXJlbjEiLCJleHAiOjE2MTU3NDY4MTR9.5OssAU9cIaa5SgyBzsd0wYf1vCRTRNeOJcCLhmLOLoAMNLrU33bjuWYRJEG3jAVsVObHsyg36p9ztc8OdVNJzg",
+						"type": "text"
+					},
+					{
+						"key": "Expect",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "johnnydoesnt",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3001/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign in Wrong Password",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjdXJlbjEiLCJleHAiOjE2MTU3NDY4MTR9.5OssAU9cIaa5SgyBzsd0wYf1vCRTRNeOJcCLhmLOLoAMNLrU33bjuWYRJEG3jAVsVObHsyg36p9ztc8OdVNJzg",
+						"type": "text"
+					},
+					{
+						"key": "Expect",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "johnnydoe",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "passwordnot",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3001/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign in No Body",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjdXJlbjEiLCJleHAiOjE2MTU3NDY4MTR9.5OssAU9cIaa5SgyBzsd0wYf1vCRTRNeOJcCLhmLOLoAMNLrU33bjuWYRJEG3jAVsVObHsyg36p9ztc8OdVNJzg",
+						"type": "text"
+					},
+					{
+						"key": "Expect",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Who am I correct",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InR5cG8iLCJpYXQiOjE2MTg5OTU1NDksImV4cCI6MTYxODk5OTE0OX0.ypumqvlMtGVBG3F_eeCWFtfqoyV_BkQ1KCvPmc5VMuk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/whoami",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"whoami"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Who am I no token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/whoami",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"whoami"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User CREATE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Mojo\",\r\n    \"last_name\": \"Jojo\",\r\n    \"username\" : \"jojomojolerolero\",\r\n    \"email\" : \"jojomojo@jojomail.mojo\",\r\n    \"password\" : \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User FINDALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/question",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User FINDONE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/question/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"question",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Question CREATE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Question\",\r\n    \"text\": \"This is a question\",\r\n    \"user\": {\r\n        \"id\" : 2\r\n    } \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/question",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Question FINDALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/question",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Question FINDONE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/question/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"question",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Answer CREATE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"This is a question\",\r\n    \"user\": {\r\n        \"id\" : 2\r\n    } ,\r\n    \"question\":{\r\n        \"id\" : 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/answer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"answer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Answer FINDALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/question",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Answer FINDONE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/question/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"question",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Who am I",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
