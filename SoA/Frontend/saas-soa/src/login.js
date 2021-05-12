@@ -1,5 +1,5 @@
 import './App.css';
-import {observer} from 'mobx-react'
+import {observer} from 'mobx-react';
 import React from 'react';
 import InputField from './InputField.js';
 import SubmitButton from './SubmitButton.js';
