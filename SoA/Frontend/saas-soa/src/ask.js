@@ -40,19 +40,19 @@ class Ask extends React.Component{
       console.log(this.state.title);
       console.log(this.state.tags);
       console.log(this.state.body);
-
       try{
 
           let res = await fetch(`http://localhost:3002/question`, {
               method: 'post',
               headers:{
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
               },
-              body:{
+              body:JSON.stringify({
                 "title": `${this.state.title}`,
-                "body": `${this.state.body}`,
-                "tags": `${this.state.tags}`
-              }
+              "body": `${this.state.body}`,
+              "tags": `${this.state.tags}`
+              })
 
           });
 
