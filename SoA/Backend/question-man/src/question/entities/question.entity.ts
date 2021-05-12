@@ -1,6 +1,16 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn
+} from "typeorm";
 import { Answer } from '../../answer/entities/answer.entity';
-import { User } from "../../users/entities/user.entity";
+import { User } from "../../user/entities/user.entity";
+import { Keyword } from "../../keyword/entities/keyword.entity";
 
 @Entity()
 export class Question {
@@ -11,7 +21,7 @@ export class Question {
   @JoinColumn({ name: 'user_fk' })
   user: User;
 
-  @Column()
+  @Column({unique: true})
   title: string;
 
   @Column()
@@ -19,4 +29,8 @@ export class Question {
 
   @OneToMany((type) => Answer, (answer) => answer.question)
   answers: Answer[];
+
+  @ManyToMany(() => Keyword, (keyword) => keyword.questions)
+  @JoinTable({name: "question_keyword",joinColumn: {name: "questionid"}, inverseJoinColumn: {name: "keywordid"}})
+  keywords: Keyword[]
 }

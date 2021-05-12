@@ -5,7 +5,7 @@ import { Answer } from "./entities/answer.entity";
 import { InjectEntityManager } from "@nestjs/typeorm";
 import { EntityManager } from "typeorm";
 import { Question } from "../question/entities/question.entity";
-import { User } from "../users/entities/user.entity";
+import { User } from "../user/entities/user.entity";
 
 @Injectable()
 export class AnswerService {
@@ -31,14 +31,14 @@ export class AnswerService {
   }
 
   async findOne(id: number) : Promise<Answer> {
-    const answer = await this.manager.findOne(Answer, id, {relations: ["answer", "user"]})
+    const answer = await this.manager.findOne(Answer, id, {relations: ["question", "user"]})
     if (!answer) throw new NotFoundException('Answer with id: ${id} not found')
     return answer;
   }
 
   async update(id: number, updateAnswerDto: UpdateAnswerDto) : Promise<Answer> {
     return this.manager.transaction(async manager => {
-      const answer = await manager.findOne(Answer, id, {relations: ["answer", "user"]})
+      const answer = await manager.findOne(Answer, id, {relations: ["question", "user"]})
       if (!answer) throw new NotFoundException('Answer with id: ${id} not found')
       manager.merge(Answer, answer, updateAnswerDto);
       return manager.save(answer);
@@ -47,7 +47,7 @@ export class AnswerService {
 
   async remove(id: number) : Promise<void>{
     return this.manager.transaction(async manager => {
-      const answer = await manager.findOne(Answer, id, {relations: ["answer", "user"]})
+      const answer = await manager.findOne(Answer, id, {relations: ["question", "user"]})
       if (!answer) throw new NotFoundException('Answer with id: ${id} not found')
       await manager.delete(Answer, id);
     });
