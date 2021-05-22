@@ -1,24 +1,33 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Answer } from "src/answer/entities/answer.entity";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Question } from "../../question/entities/question.entity";
-import { Answer } from "../../answer/entities/answer.entity";
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column()
-  first_name:string;
+  first_name: string;
 
   @Column()
-  last_name:string;
+  last_name: string;
 
   @Column()
-  username:string;
+  birthday: string;
 
-  @OneToMany(() => Question, (question)=> question.user)
+  @Column()
+  username: string;
+
+  @Column()
+  email: string;
+
+  @Column()
+  password: string;
+
+  @OneToMany(() => Question, (question) => question.user)
   questions: Question[];
 
-  @OneToMany(() => Answer, (answer)=> answer.user)
-  answers: Answer[];
+  @OneToMany(() => Answer, (answer) => answer.user)
+  answers:Answer[];
 }

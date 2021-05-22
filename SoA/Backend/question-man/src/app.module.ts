@@ -6,7 +6,8 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { AnswerModule } from './answer/answer.module';
 import { UserModule } from './user/user.module';
 import { KeywordModule } from './keyword/keyword.module';
-import { QuotesService } from './services/quotes/quotes.service';
+import { AuthModule } from './auth/auth.module';
+import { UserService } from "./user/user.service";
 
 @Module({
   imports: [QuestionModule,
@@ -14,9 +15,10 @@ import { QuotesService } from './services/quotes/quotes.service';
   AnswerModule,
   UserModule,
   KeywordModule,
-    HttpModule
+    HttpModule,
+    AuthModule
   ],
   controllers: [AppController],
-  providers: [AppService, QuotesService],
+  providers: [AppService, UserService],
 })
 export class AppModule {}

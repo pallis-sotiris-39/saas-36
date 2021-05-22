@@ -5,16 +5,20 @@ import { Question } from './entities/question.entity';
 import { InjectEntityManager } from "@nestjs/typeorm";
 import { EntityManager } from "typeorm";
 import { User } from "../user/entities/user.entity";
+import { UserService } from "../user/user.service";
 
 @Injectable()
 export class QuestionService {
-  constructor(@InjectEntityManager() private manager: EntityManager) {}
+  constructor(
+    @InjectEntityManager() private manager: EntityManager,
+    private userService: UserService
+  ) {}
 
   async create(createQuestionDto: CreateQuestionDto) : Promise<Question> {
     return this.manager.transaction(async manager => {
       const userID = createQuestionDto.user.id;
       if(!userID) throw new BadRequestException('User id missing');
-      const user = await manager.findOne(User, userID);
+      const user = await manager.findOne(User, userID, {relations: ['questions', 'answers']});
       if(!user) throw new NotFoundException(`User with id: ${userID} not found`);
       const question = await manager.create(Question, createQuestionDto);
       return manager.save(question);
