@@ -2,61 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5f229a9-d989-46af-abfe-758d2ac79b41" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/bin/www" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data-layer/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data-layer/src/question/question.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/question/question.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/.eslintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/.prettierrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/nest-cli.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/ormconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/answer/answer.controller.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/answer/answer.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/answer/answer.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/answer/answer.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/answer/answer.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/answer/dto/create-answer.dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/answer/dto/update-answer.dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/answer/entities/answer.entity.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/app.controller.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/app.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/app.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/auth/auth.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/auth/auth.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/auth/auth.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/auth/constants.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/auth/jwt-auth.guard.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/auth/jwt.strategy.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/keyword/dto/create-keyword.dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/keyword/dto/update-keyword.dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/keyword/entities/keyword.entity.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/keyword/keyword.controller.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/keyword/keyword.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/keyword/keyword.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/keyword/keyword.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/keyword/keyword.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/question/dto/create-question.dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/question/dto/update-question.dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/question/entities/question.entity.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/question/question.controller.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/question/question.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/question/question.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/question/question.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/question/question.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/user/entities/user.entity.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/user/user.controller.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/user/user.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/user/user.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/user/user.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/src/user/user.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/test/app.e2e-spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/test/jest-e2e.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/tsconfig.build.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +33,7 @@
       <option name="presentableId" value="Default" />
       <updated>1622477146926</updated>
       <workItem from="1622477158568" duration="376000" />
+      <workItem from="1622480755251" duration="153000" />
     </task>
     <servers />
   </component>
