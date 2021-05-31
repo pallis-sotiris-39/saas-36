@@ -4,9 +4,7 @@ import {
   Post,
   Body,
   Param,
-  Delete,
-  Res,
-  Req
+  Delete
 } from "@nestjs/common";
 import { Request, Response } from 'express';
 import { QuestionService } from './question.service';
@@ -22,12 +20,12 @@ export class QuestionController {
   }
 
   @Get()
-  async findAll(@Req() req: Request, @Res() res: Response) {
+  async findAll() {
     return await this.questionService.findAll();
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string, @Req() req: Request, @Res() res: Response) {
+  async findOne(@Param('id') id: string) {
     return await this.questionService.findOne(+id);
   }
 
