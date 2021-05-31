@@ -6,8 +6,11 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post('signin')
-  async signIn(@Body() body: string) {
-    return this.appService.signIn(body);
+  async signIn(
+    @Body('username') username: string,
+    @Body('password') password: string
+  ) {
+    return (await this.appService.signIn(username, password)).data;
   }
 
   @Post('question')
