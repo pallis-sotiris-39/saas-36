@@ -70,7 +70,7 @@ router.post('/signup',
             if (!email.match(validRegex)){
                 throw new Error('Email is in wrong format.');
             }
-            if(!/^([1-9]|0[1-9]|1[0-2])\/([1-9]|0[1-9]|1[0-9]|2[0-9])\/([1-2][0-9][0-9][0-9])$/.test(birthday)){
+            if(!/^([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])\/([1-9]|0[1-9]|1[0-2])\/([1-2][0-9][0-9][0-9])$/.test(birthday)){
                 throw new Error('Birthday is in wrong format.');
             }
             let hashedPassword = await bcrypt.hash(password, 10);
