@@ -13,43 +13,69 @@ export class AppController {
     return (await this.appService.signIn(username, password)).data;
   }
 
+  @Post('signup')
+  async signUp(
+    @Body('first_name') first_name: string,
+    @Body('last_name') last_name: string,
+    @Body('birthday') birthday: string,
+    @Body('email') email: string,
+    @Body('username') username: string,
+    @Body('password') password: string
+  ){
+    return (await this.appService.signUp(first_name, last_name, birthday, email, username, password)).data;
+  }
+
+  @Get('whoami')
+  async whoAmI(){}
+
   @Post('question')
-  create() {
-    return null;
+  async createQ(
+    @Body('title') title: string,
+    @Body('text') text: string,
+    @Body('created') created: string,
+    @Body('keywords') keywords: string[],
+    @Body('user') user
+  ) {
+    return (await this.appService.createQ(title, text, created, keywords, user)).data;
   }
 
   @Get('question')
   async findAllQ() {
-    return await this.appService.getQuestionManNoParams('question');
+    return (await this.appService.getQuestionManNoParams('question')).data;
   }
 
   @Get('question/:id')
   async findOneQ(@Param('id') id: string) {
-    return null;
+    return (await this.appService.getQuestionManOne('question', id)).data;
   }
 
   @Delete('question/:id')
-  removeQ(@Param('id') id: string) {
-    return null;
+  async removeQ(@Param('id') id: string) {
+    return (await this.appService.removeQuestionMan('question', id)).data;
   }
 
   @Post('answer')
-  createQ() {
-    return null;
+  async createA(
+    @Body('text') text: string,
+    @Body('created') created: string,
+    @Body('question') question,
+    @Body('user') user
+  ) {
+    return (await this.appService.createA(text, created, question, user)).data;
   }
 
   @Get('answer')
-  findAllA() {
-    return this.appService.getQuestionManNoParams('answer');
+  async findAllA() {
+    return (await this.appService.getQuestionManNoParams('answer')).data;
   }
 
   @Get('answer/:id')
-  findOneA(@Param('id') id: string) {
-    return null;
+  async findOneA(@Param('id') id: string) {
+    return (await this.appService.getQuestionManOne('answer', id)).data;
   }
 
   @Delete('answer/:id')
-  removeA(@Param('id') id: string) {
-    return null;
+  async removeA(@Param('id') id: string) {
+    return (await this.appService.removeQuestionMan('answer', id)).data;
   }
 }

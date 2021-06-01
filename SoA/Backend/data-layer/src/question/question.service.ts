@@ -15,7 +15,7 @@ export class QuestionService {
     return this.manager.transaction(async manager => {
       const userID = createQuestionDto.user.id;
       if(!userID) throw new BadRequestException('User id missing');
-      const user = await manager.findOne(User, userID, {relations: ['questions', 'answers']});
+      const user = await manager.findOne(User, userID);
       if(!user) throw new NotFoundException(`User with id: ${userID} not found`);
       const question = await manager.create(Question, createQuestionDto);
       return manager.save(question);
@@ -27,14 +27,14 @@ export class QuestionService {
   }
 
   async findOne(id: number) : Promise<Question> {
-    const question = await this.manager.findOne(Question, id, {relations: ["user", "keywords", "answers"]})
+    const question = await this.manager.findOne(Question, id, {relations: ["user", "answers"]})
     if (!question) throw new NotFoundException(`Question with id: ${id} not found`)
     return question;
   }
 
   async remove(id: number) : Promise<void>{
     return this.manager.transaction(async manager => {
-      const question = await manager.findOne(Question, id, {relations: ["user", "keywords", "answers"]})
+      const question = await manager.findOne(Question, id, {relations: ["user", "answers"]})
       if (!question) throw new NotFoundException(`Question with id: ${id} not found`)
       await manager.delete(Question, id);
     });
