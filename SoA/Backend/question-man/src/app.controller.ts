@@ -27,6 +27,15 @@ export class AppController {
     return (await this.appService.removeQuestionMan('question', id)).data;
   }
 
+  @Post('keyword')
+  async attachKeyword
+  (
+    @Body('keyword') keyword: string,
+    @Body('id') id: number
+  ){
+    return (await this.appService.attachKeyword(keyword, id)).data;
+  }
+
   @Post('answer')
   async createA(@Body() createAnswerDto: CreateAnswerDto) {
     return (await this.appService.createA(createAnswerDto)).data;

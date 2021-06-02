@@ -22,6 +22,17 @@ export class QuestionService {
     });
   }
 
+  async attach(keywords: string[], id: number){
+    for (const word in keywords){
+      try {
+        await this.manager.query(`INSERT INTO question_keyword VALUES (${id}, ${word})`);
+      }catch (e){
+        throw e
+      }
+    }
+    return;
+  }
+
   async findAll() : Promise<Question[]> {
     return this.manager.find(Question);
   }

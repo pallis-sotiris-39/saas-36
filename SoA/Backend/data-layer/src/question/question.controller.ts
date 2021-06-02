@@ -15,10 +15,17 @@ export class QuestionController {
   constructor(private readonly questionService: QuestionService) {}
 
   @Post()
-  create(@Body() createQuestionDto: CreateQuestionDto) {
-    return this.questionService.create(createQuestionDto);
+  async create(@Body() createQuestionDto: CreateQuestionDto) {
+    return await this.questionService.create(createQuestionDto);
   }
 
+  @Post('attach')
+  async attach(
+    @Body('keywords') keywords: string[],
+    @Body('id') id: number
+  ){
+    return await this.questionService.attach(keywords, id);
+  }
   @Get()
   async findAll() {
     return await this.questionService.findAll();

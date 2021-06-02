@@ -20,18 +20,25 @@ export class AppService {
   }
 
   createQ(createQuestionDto: CreateQuestionDto) {
-    return this.httpService.post("http://localhost:3004/question",
+    return this.httpService.post('http://localhost:3004/question',
       {
         title: createQuestionDto.title,
         text: createQuestionDto.text,
         created: createQuestionDto.created,
-        keywords: createQuestionDto.keywords,
         user: createQuestionDto.user
       }).toPromise();
   }
 
+  attachKeyword(keyword: string, id: number){
+    return this.httpService.post('http://localhost:3004/keyword',
+      {
+        keyword: keyword,
+        id: id
+      }).toPromise();
+  }
+
   createA(createAnswerDto: CreateAnswerDto) {
-    return this.httpService.post("http://localhost:3004/answer",
+    return this.httpService.post('http://localhost:3004/answer',
       {
         text: createAnswerDto.text,
         created: createAnswerDto.created,
