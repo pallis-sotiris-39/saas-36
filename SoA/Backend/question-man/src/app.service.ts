@@ -7,40 +7,20 @@ export class AppService {
   constructor(private httpService: HttpService) {
   }
 
-  signIn(username, password) {
-    return this.httpService.post("http://localhost:3002/signin",
-      {
-        username: username,
-        password: password
-      }).toPromise();
-  }
-
-  signUp(first_name, last_name, birthday, email, username, password) {
-    return this.httpService.post("http://localhost:3002/signup",
-      {
-        first_name: first_name,
-        last_name: last_name,
-        birthday: birthday,
-        email: email,
-        username: username,
-        password: password
-      }).toPromise();
-  }
-
   getQuestionManNoParams(url: string) {
-    return this.httpService.get("http://localhost:3003/" + url).toPromise();
+    return this.httpService.get("http://localhost:3004/" + url).toPromise();
   }
 
   getQuestionManOne(url: string, id: string) {
-    return this.httpService.get(`http://localhost:3003/${url}/${id}`).toPromise();
+    return this.httpService.get(`http://localhost:3004/${url}/${id}`).toPromise();
   }
 
   removeQuestionMan(url: string, id: string) {
-    return this.httpService.delete(`http://localhost:3003/${url}/${id}`).toPromise();
+    return this.httpService.delete(`http://localhost:3004/${url}/${id}`).toPromise();
   }
 
   createQ(createQuestionDto: CreateQuestionDto) {
-    return this.httpService.post("http://localhost:3003/question",
+    return this.httpService.post("http://localhost:3004/question",
       {
         title: createQuestionDto.title,
         text: createQuestionDto.text,
@@ -51,7 +31,7 @@ export class AppService {
   }
 
   createA(createAnswerDto: CreateAnswerDto) {
-    return this.httpService.post("http://localhost:3003/answer",
+    return this.httpService.post("http://localhost:3004/answer",
       {
         text: createAnswerDto.text,
         created: createAnswerDto.created,

@@ -1,34 +1,11 @@
 import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
 import { AppService } from './app.service';
-import { CreateAnswerDto } from "./create-answer.dto";
 import { CreateQuestionDto } from "./create-question.dto";
+import { CreateAnswerDto } from "./create-answer.dto";
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
-
-  @Post('signin')
-  async signIn(
-    @Body('username') username: string,
-    @Body('password') password: string
-  ) {
-    return (await this.appService.signIn(username, password)).data;
-  }
-
-  @Post('signup')
-  async signUp(
-    @Body('first_name') first_name: string,
-    @Body('last_name') last_name: string,
-    @Body('birthday') birthday: string,
-    @Body('email') email: string,
-    @Body('username') username: string,
-    @Body('password') password: string
-  ){
-    return (await this.appService.signUp(first_name, last_name, birthday, email, username, password)).data;
-  }
-
-  @Get('whoami')
-  async whoAmI(){}
 
   @Post('question')
   async createQ(@Body() createQuestionDto: CreateQuestionDto) {
@@ -51,7 +28,7 @@ export class AppController {
   }
 
   @Post('answer')
-  async create (@Body() createAnswerDto: CreateAnswerDto) {
+  async createA(@Body() createAnswerDto: CreateAnswerDto) {
     return (await this.appService.createA(createAnswerDto)).data;
   }
 
