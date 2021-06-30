@@ -1,11 +1,34 @@
 import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
 import { AppService } from './app.service';
-import { CreateQuestionDto } from "./create-question.dto";
 import { CreateAnswerDto } from "./create-answer.dto";
+import { CreateQuestionDto } from "./create-question.dto";
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
+
+  @Post('signin')
+  async signIn(
+    @Body('username') username: string,
+    @Body('password') password: string
+  ) {
+    return (await this.appService.signIn(username, password)).data;
+  }
+
+  @Post('signup')
+  async signUp(
+    @Body('first_name') first_name: string,
+    @Body('last_name') last_name: string,
+    @Body('birthday') birthday: string,
+    @Body('email') email: string,
+    @Body('username') username: string,
+    @Body('password') password: string
+  ){
+    return (await this.appService.signUp(first_name, last_name, birthday, email, username, password)).data;
+  }
+
+  @Get('whoami')
+  async whoAmI(){}
 
   @Post('question')
   async createQ(@Body() createQuestionDto: CreateQuestionDto) {
@@ -27,17 +50,8 @@ export class AppController {
     return (await this.appService.removeQuestionMan('question', id)).data;
   }
 
-  @Post('keyword')
-  async attachKeyword
-  (
-    @Body('keyword') keyword: string,
-    @Body('id') id: number
-  ){
-    return (await this.appService.attachKeyword(keyword, id)).data;
-  }
-
   @Post('answer')
-  async createA(@Body() createAnswerDto: CreateAnswerDto) {
+  async create (@Body() createAnswerDto: CreateAnswerDto) {
     return (await this.appService.createA(createAnswerDto)).data;
   }
 
