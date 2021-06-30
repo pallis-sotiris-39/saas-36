@@ -4,7 +4,8 @@ import { Redirect, useHistory } from "react-router-dom";
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import {withRouter} from "react-router-dom";
 import ama from './images/AmA1.png';
-import SubmitButton from './SubmitButton'
+import SubmitButton from './SubmitButton';
+import 'simplebar';
 
 class Header extends React.Component {
 

@@ -9,7 +9,11 @@ import Signup from './signup';
 import Ask from './ask';
 import Forgot from './forgot';
 import Profile from './profile';
+import Profileq from './profileq';
+import Profilea from './profilea';
 import './App.css';
+import 'simplebar';
+import 'simplebar/dist/simplebar.css';
 
 class App extends React.Component {
 
@@ -29,6 +33,8 @@ class App extends React.Component {
             <Route path="/AmA" component={Ask}/>
             <Route path="/recover" component={Forgot}/>
             <Route path="/profile" component={Profile}/>
+            <Route path="/profile_a" component={Profilea}/>
+            <Route path="/profile_q" component={Profileq}/>
           </Switch>
           <Footer />
         </div>

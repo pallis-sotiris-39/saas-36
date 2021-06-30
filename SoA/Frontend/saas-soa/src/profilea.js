@@ -84,6 +84,7 @@ class Profile extends React.Component{
                 <section className="blur-banner">
                     <div className ="profilebox">
                             <p className="profilename">{x.username}</p>
+
                             <Link to = '/profile'>
                               <button className="questions">All activity</button>
                             </Link>

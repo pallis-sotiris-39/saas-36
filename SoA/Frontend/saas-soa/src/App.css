@@ -619,7 +619,7 @@ footer ul li a:hover {
 
 .profilebox{
   width: 300px;
-  height: 400px;
+  height: 300px;
   background: #111;
   color: #111;
   margin-left: 100px;
@@ -627,6 +627,7 @@ footer ul li a:hover {
   margin-bottom: 40px;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
 }
 
 .profilebox input{
@@ -640,14 +641,11 @@ footer ul li a:hover {
     border: none;
     outline: none;
     height: 40px;
-    width: 100px;
     color: #f3f3f3;
     background: #35312e;
     font-family: Catamaran;
     font-size: 15px;
     border-radius: 5px;
-    margin-top: -15px;
-    margin-bottom: 5px;
   }
 
 
@@ -673,7 +671,18 @@ footer ul li a:hover {
   align-content: center;
 }
 
+.profilename{
+  font-family: Catamaran;
+  font-size: 25px;
+  color: #fff;
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
 
+.questions{
+margin-top: 15px;
+width:200px;
+}
 
 /* SIGN UP */
 

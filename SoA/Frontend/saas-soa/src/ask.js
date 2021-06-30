@@ -50,8 +50,8 @@ class Ask extends React.Component{
               },
               body:JSON.stringify({
                 "title": `${this.state.title}`,
-              "body": `${this.state.body}`,
-              "tags": `${this.state.tags}`
+                "body": `${this.state.body}`,
+                "tags": `${this.state.tags}`
               })
 
           });

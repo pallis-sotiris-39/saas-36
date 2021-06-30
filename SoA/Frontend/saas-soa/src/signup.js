@@ -30,9 +30,11 @@ class Signup extends React.Component {
 
   resetForm(){
         this.setState({
-            username:'',
-            password:'',
-            buttonDisabled: false
+          email:'',
+          username:'',
+          password:'',
+          repeat:'',
+          buttonDisabled: false
         })
   }
 
@@ -42,6 +44,9 @@ class Signup extends React.Component {
       console.log(this.state.username);
       if(!this.state.username) return;
       if(!this.state.password) return;
+      if(!this.state.email) return;
+      if(!this.state.repeat) return;
+      if(this.state.password != this.state.repeat) return;
 
       this.setState({
           buttonDisabled: true
@@ -49,12 +54,21 @@ class Signup extends React.Component {
 
       try{
 
-          let res = await fetch(`http://localhost:8765/signin?username=${this.state.username}&password=${this.state.password}`, {
+          let res = await fetch(`http://localhost:3001/signup`, {
               mode: 'cors',
               method: 'post',
               headers:{
-                 'Content-Type': 'application/x-www-form-urlencoded'
-              }
+                 'Content-Type': 'application/x-www-form-urlencoded',
+                 'Accept': 'application/json'
+              },
+              body:JSON.stringify({
+                "first_name" : "forename",
+                "last_name" : "surname",
+                "birthday" : "12/12/1999",
+                "email" : `${this.state.email}`,
+                "username" : `${this.state.username}`,
+                "password" : `${this.state.password}`
+              })
           });
 
           console.log(res);
@@ -66,20 +80,6 @@ class Signup extends React.Component {
           console.log(status);
           if (status == 200){
             console.log('yaaass');
-            document.cookie=`token = ${result.timestamp}`;
-            document.cookie='flag=true';
-            let x = document.cookie
-              .split(';')
-              .reduce((res, c) => {
-                const [key, val] = c.trim().split('=').map(decodeURIComponent)
-                const allNumbers = str => /^\d+$/.test(str);
-                try {
-                  return Object.assign(res, { [key]: allNumbers(val) ?  val : JSON.parse(val) })
-                } catch (e) {
-                  return Object.assign(res, { [key]: val })
-                }
-              }, {});
-            console.log(x);
             this.props.history.push("/");
             window.location.reload(false);
           }
