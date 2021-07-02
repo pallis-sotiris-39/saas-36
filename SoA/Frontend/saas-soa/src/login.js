@@ -46,12 +46,17 @@ class Login extends React.Component {
 
       try{
 
-          let res = await fetch(`http://localhost:3001/signin?username=${this.state.username}&password=${this.state.password}`, {
+          let res = await fetch(`http://localhost:3001/signin`, {
               mode: 'cors',
               method: 'post',
               headers:{
-                 'Content-Type': 'application/x-www-form-urlencoded'
-              }
+                 'Content-Type': 'application/json',
+                 'Accept': 'application/json'
+              },
+              body:JSON.stringify({
+                "username": `${this.state.username}`,
+                "password": `${this.state.password}`,
+              })
           });
 
           console.log(res);
