@@ -88,6 +88,7 @@ router.post('/signup',
                 res.send
             }
         }catch (e) {
+            console.log(e.message);
             res.status(400).send({
                 message: e.message
             })
