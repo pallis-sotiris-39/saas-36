@@ -14,16 +14,10 @@ export class User {
   last_name: string;
 
   @Column()
-  birthday: string;
-
-  @Column()
   username: string;
 
   @Column()
   email: string;
-
-  @Column()
-  password: string;
 
   @OneToMany(() => Question, (question) => question.user)
   questions: Question[];

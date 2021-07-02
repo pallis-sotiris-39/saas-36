@@ -1,21 +1,25 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 12.7 (Ubuntu 12.7-0ubuntu0.20.04.1)
--- Dumped by pg_dump version 12.7 (Ubuntu 12.7-0ubuntu0.20.04.1)
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
+ALTER TABLE ONLY public.question_keyword DROP CONSTRAINT fkquestion_k861823;
+ALTER TABLE ONLY public.question DROP CONSTRAINT fkquestion251144;
+ALTER TABLE ONLY public.answer DROP CONSTRAINT fkanswer480594;
+ALTER TABLE ONLY public.answer DROP CONSTRAINT fkanswer312233;
+ALTER TABLE ONLY public."user" DROP CONSTRAINT user_username_key;
+ALTER TABLE ONLY public."user" DROP CONSTRAINT user_pkey;
+ALTER TABLE ONLY public."user" DROP CONSTRAINT user_email_key;
+ALTER TABLE ONLY public.question DROP CONSTRAINT question_title_key;
+ALTER TABLE ONLY public.question DROP CONSTRAINT question_pkey;
+ALTER TABLE ONLY public.question_keyword DROP CONSTRAINT question_keyword_pkey;
+ALTER TABLE ONLY public.answer DROP CONSTRAINT answer_pkey;
+ALTER TABLE public."user" ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.question ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.answer ALTER COLUMN id DROP DEFAULT;
+DROP SEQUENCE public.user_id_seq;
+DROP TABLE public."user";
+DROP TABLE public.question_keyword;
+DROP SEQUENCE public.question_id_seq;
+DROP TABLE public.question;
+DROP SEQUENCE public.answer_id_seq;
+DROP TABLE public.answer;
+DROP EXTENSION pgcrypto;
 --
 -- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: -
 --
@@ -30,10 +34,6 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
 COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
 
 
-SET default_tablespace = '';
-
-SET default_table_access_method = heap;
-
 --
 -- Name: answer; Type: TABLE; Schema: public; Owner: typo
 --
@@ -47,7 +47,6 @@ CREATE TABLE public.answer (
 );
 
 
-ALTER TABLE public.answer OWNER TO typo;
 
 --
 -- Name: answer_id_seq; Type: SEQUENCE; Schema: public; Owner: typo
@@ -62,7 +61,6 @@ CREATE SEQUENCE public.answer_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.answer_id_seq OWNER TO typo;
 
 --
 -- Name: answer_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: typo
@@ -84,7 +82,6 @@ CREATE TABLE public.question (
 );
 
 
-ALTER TABLE public.question OWNER TO typo;
 
 --
 -- Name: question_id_seq; Type: SEQUENCE; Schema: public; Owner: typo
@@ -99,7 +96,6 @@ CREATE SEQUENCE public.question_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.question_id_seq OWNER TO typo;
 
 --
 -- Name: question_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: typo
@@ -118,7 +114,6 @@ CREATE TABLE public.question_keyword (
 );
 
 
-ALTER TABLE public.question_keyword OWNER TO typo;
 
 --
 -- Name: user; Type: TABLE; Schema: public; Owner: typo
@@ -136,7 +131,6 @@ CREATE TABLE public."user" (
 );
 
 
-ALTER TABLE public."user" OWNER TO typo;
 
 --
 -- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: typo
@@ -151,7 +145,6 @@ CREATE SEQUENCE public.user_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.user_id_seq OWNER TO typo;
 
 --
 -- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: typo
@@ -185,58 +178,10 @@ ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public.user_
 -- Data for Name: answer; Type: TABLE DATA; Schema: public; Owner: typo
 --
 
-COPY public.answer (id, user_fk, question_fk, text, created) FROM stdin;
-2	2	2	This is an answer	2021-06-30 23:00:00
-\.
-
-
---
--- Data for Name: question; Type: TABLE DATA; Schema: public; Owner: typo
---
-
-COPY public.question (id, user_fk, title, text, created) FROM stdin;
-2	1	Question	This is a question	2021-06-30 23:00:00
-\.
-
-
---
--- Data for Name: question_keyword; Type: TABLE DATA; Schema: public; Owner: typo
---
-
-COPY public.question_keyword (questionid, keyword) FROM stdin;
-\.
-
-
---
--- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: typo
---
-
-COPY public."user" (id, first_name, last_name, birthday, username, email, password) FROM stdin;
-1	Sotiris	Pallis	1999-03-03	tsotsos	tsotos@tsotso.tsp	$2b$10$D7xI5HQ..4lCJRV6FYV87.OhzfwWN2u.5a2otSOZTy4U4S7Y1V/a.
-2	Ntina	Skarifou	1999-05-21	ntinaskarifou	ntinaki@tsourekaki.ska	$2b$10$30BwnRuevRH6i12mfQ.ECOC7K0T04VlJfiFpL6zfeM.AcFD2ZtV0y
-\.
-
-
---
--- Name: answer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: typo
---
-
-SELECT pg_catalog.setval('public.answer_id_seq', 2, true);
-
-
---
--- Name: question_id_seq; Type: SEQUENCE SET; Schema: public; Owner: typo
---
-
-SELECT pg_catalog.setval('public.question_id_seq', 2, true);
-
 
 --
 -- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: typo
 --
-
-SELECT pg_catalog.setval('public.user_id_seq', 2, true);
-
 
 --
 -- Name: answer answer_pkey; Type: CONSTRAINT; Schema: public; Owner: typo
@@ -319,11 +264,11 @@ ALTER TABLE ONLY public.question
 
 
 --
--- Name: question_keyword question_keyword_questionid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: typo
+-- Name: question_keyword fkquestion_k861823; Type: FK CONSTRAINT; Schema: public; Owner: typo
 --
 
 ALTER TABLE ONLY public.question_keyword
-    ADD CONSTRAINT question_keyword_questionid_fkey FOREIGN KEY (questionid) REFERENCES public.question(id);
+    ADD CONSTRAINT fkquestion_k861823 FOREIGN KEY (questionid) REFERENCES public.question(id);
 
 
 --

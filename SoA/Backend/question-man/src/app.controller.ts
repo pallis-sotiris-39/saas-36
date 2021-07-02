@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CreateQuestionDto } from "./create-question.dto";
 import { CreateAnswerDto } from "./create-answer.dto";

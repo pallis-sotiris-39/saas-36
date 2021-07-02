@@ -20,12 +20,14 @@ passport.use('signin', new LocalStrategy(async function (username, password, don
             return done(null, false);
         }
         let passwordFromBase = res.rows[0].password;
-
+        let ID = res.rows[0].id;
         bcrypt.compare(password, passwordFromBase, function (err, result) {
             if(err){
                 throw err
             }
-            return result ?  done(null, {username: username}) : done(null, false)
+            return result ?  done(null, {
+                userID: ID
+            }) : done(null, false)
         })
     }catch (e) {
         throw e
@@ -48,6 +50,7 @@ router.post('/signin',
     function(req, res, next) {
         res.header('Access-Control-Allow-Origin', req.headers.origin);
         res.json({
+            userID: req.user.userID,
             token: jwt.sign(req.user, JWT_SECRET, { expiresIn: 3600 })
         });
     }
@@ -95,23 +98,5 @@ router.post('/signup',
         }
     }
 )
-
-//POST update
-router.post('/update',
-    passport.authenticate('token', { session: false}),
-    function (req, res, next) {
-        res.header('Access-Control-Allow-Origin', req.headers.origin);
-
-    }
-);
-
-//GET whoami
-router.get('/whoami',
-    passport.authenticate('token', { session: false}),
-    function (req,res, next) {
-        res.header('Access-Control-Allow-Origin', req.headers.origin);
-        res.json({user: req.user});
-    }
-);
 
 module.exports = router;
