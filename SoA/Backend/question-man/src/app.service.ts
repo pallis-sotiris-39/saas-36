@@ -20,6 +20,7 @@ export class AppService {
   }
 
   createQ(createQuestionDto: CreateQuestionDto) {
+    console.log("BLAH");
     return this.httpService.post('http://localhost:3004/question',
       {
         title: createQuestionDto.title,

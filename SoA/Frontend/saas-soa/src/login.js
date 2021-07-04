@@ -66,10 +66,11 @@ class Login extends React.Component {
           let status = await res.status;
           console.log(result);
           console.log(status);
-          if (status == 200){
+          if (status == 201){
             console.log('yaaass');
             document.cookie=`username = ${this.state.username}`;
             document.cookie='flag=true';
+            document.cookie=`token = ${result.token}`;
             let x = document.cookie
               .split(';')
               .reduce((res, c) => {
