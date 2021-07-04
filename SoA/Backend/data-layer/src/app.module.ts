@@ -6,10 +6,22 @@ import { UserService } from "./user/user.service";
 import { QuestionModule } from './question/question.module';
 import { AnswerModule } from './answer/answer.module';
 import { UserModule } from './user/user.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [QuestionModule,
-    TypeOrmModule.forRoot(),
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
+      "type": "postgres",
+      "host": process.env.DB_HOST,
+      "port": parseInt(process.env.DB_PORT, 10) || 5432,
+      "username": "postgres",
+      "password": "password",
+      "database": "saas-36",
+      "entities": [
+        "dist/**/*.entity{.ts,.js}"
+      ]
+    }),
     AnswerModule,
     UserModule,
     HttpModule,
