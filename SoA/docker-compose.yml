@@ -1,0 +1,60 @@
+version: "3.9"
+services:
+    database:
+        container_name: "database"
+        build: ./Backend/Database/
+        environment:
+            - "POSTGRES_PASSWORD=saas-36"
+            - "POSTGRES_USER=saas-36"
+            - "POSTGRES_DB=saas-36"
+        image: "palli/soa-database"
+        ports: 
+            - 5432:5432
+    router:
+        container_name: "router"
+        build: ./Backend/router/
+        image: "soa-router"
+        ports:
+            - 3001:3001
+    auth:
+        container_name: "auth"
+        build: ./Backend/Authentication/
+        image: "palli/soa-auth"
+        ports:
+            - 3002:3002
+        environment: 
+            - "DB_HOST=database"
+            - "DB_PORT=5432"
+        depends_on:
+            - "router"
+            - "database"
+    dlayer:
+        container_name: "dlayer"
+        build: ./Backend/data-layer/
+        image: "palli/soa-data-layer"
+        environment: 
+            - "DB_HOST=database"
+            - "DB_PORT=5432"
+        ports:
+            - 3004:3004
+        depends_on:
+            - "database"
+    qman:
+        container_name: "qman"
+        build: ./Backend/question-man/
+        image: "palli/soa-q-man"
+        ports:
+            - 3003:3003
+        depends_on:
+            - "router"
+            - "database"
+            - "dlayer"
+    frontend:
+        container_name: "frontend"
+        build: ./Frontend/saas-soa
+        image: "palli/soa-frontend"
+        ports:
+            - 3000:3000
+        depends_on: 
+            - "router"
+        
