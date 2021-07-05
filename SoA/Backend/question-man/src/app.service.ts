@@ -8,20 +8,19 @@ export class AppService {
   }
 
   getQuestionManNoParams(url: string) {
-    return this.httpService.get("http://localhost:3004/" + url).toPromise();
+    return this.httpService.get(`http://${process.env.DATA_LAYER_HOST}:${process.env.DATA_LAYER_PORT}/` + url).toPromise();
   }
 
   getQuestionManOne(url: string, id: string) {
-    return this.httpService.get(`http://localhost:3004/${url}/${id}`).toPromise();
+    return this.httpService.get(`http://${process.env.DATA_LAYER_HOST}:${process.env.DATA_LAYER_PORT}/${url}/${id}`).toPromise();
   }
 
   removeQuestionMan(url: string, id: string) {
-    return this.httpService.delete(`http://localhost:3004/${url}/${id}`).toPromise();
+    return this.httpService.delete(`http://${process.env.DATA_LAYER_HOST}:${process.env.DATA_LAYER_PORT}/${url}/${id}`).toPromise();
   }
 
   createQ(createQuestionDto: CreateQuestionDto) {
-    console.log("BLAH");
-    return this.httpService.post('http://localhost:3004/question',
+    return this.httpService.post(`http://${process.env.DATA_LAYER_HOST}:${process.env.DATA_LAYER_PORT}/question`,
       {
         title: createQuestionDto.title,
         text: createQuestionDto.text,
@@ -31,7 +30,7 @@ export class AppService {
   }
 
   attachKeyword(keyword: string, id: number){
-    return this.httpService.post('http://localhost:3004/keyword',
+    return this.httpService.post(`http://${process.env.DATA_LAYER_HOST}:${process.env.DATA_LAYER_PORT}/keyword`,
       {
         keyword: keyword,
         id: id
@@ -39,7 +38,7 @@ export class AppService {
   }
 
   createA(createAnswerDto: CreateAnswerDto) {
-    return this.httpService.post('http://localhost:3004/answer',
+    return this.httpService.post(`http://${process.env.DATA_LAYER_HOST}:${process.env.DATA_LAYER_PORT}/answer`,
       {
         text: createAnswerDto.text,
         created: createAnswerDto.created,

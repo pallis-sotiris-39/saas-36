@@ -1,7 +1,5 @@
 /node_modules
 
-/bin/dbConfig.js
-
 /.env
 
 # Logs

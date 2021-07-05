@@ -8,7 +8,7 @@ export class AppService {
   }
 
   signIn(username, password) {
-    return this.httpService.post("http://localhost:3002/signin",
+    return this.httpService.post(`http:/${process.env.AUTH_HOST}:${process.env.AUTH_PORT}/signin`,
       {
         username: username,
         password: password
@@ -16,7 +16,7 @@ export class AppService {
   }
 
   signUp(first_name, last_name, birthday, email, username, password) {
-    return this.httpService.post("http://localhost:3002/signup",
+    return this.httpService.post(`http://${process.env.AUTH_HOST}:${process.env.AUTH_PORT}/signup`,
       {
         first_name: first_name,
         last_name: last_name,
@@ -28,19 +28,19 @@ export class AppService {
   }
 
   getQuestionManNoParams(url: string) {
-    return this.httpService.get("http://localhost:3003/" + url).toPromise();
+    return this.httpService.get(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/` + url).toPromise();
   }
 
   getQuestionManOne(url: string, id: string) {
-    return this.httpService.get(`http://localhost:3003/${url}/${id}`).toPromise();
+    return this.httpService.get(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/${url}/${id}`).toPromise();
   }
 
   removeQuestionMan(url: string, id: string) {
-    return this.httpService.delete(`http://localhost:3003/${url}/${id}`).toPromise();
+    return this.httpService.delete(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/${url}/${id}`).toPromise();
   }
 
   createQ(createQuestionDto: CreateQuestionDto) {
-    return this.httpService.post("http://localhost:3003/question",
+    return this.httpService.post(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/question`,
       {
         title: createQuestionDto.title,
         text: createQuestionDto.text,
@@ -51,7 +51,7 @@ export class AppService {
   }
 
   createA(createAnswerDto: CreateAnswerDto) {
-    return this.httpService.post("http://localhost:3003/answer",
+    return this.httpService.post(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/answer`,
       {
         text: createAnswerDto.text,
         created: createAnswerDto.created,

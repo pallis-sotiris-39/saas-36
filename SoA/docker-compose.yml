@@ -13,7 +13,12 @@ services:
     router:
         container_name: "router"
         build: ./Backend/router/
-        image: "soa-router"
+        environment: 
+            - "QMAN_HOST=qman"
+            - "QMAN_PORT=3003"
+            - "AUTH_HOST=auth"
+            - "AUTH_PORT=3002"
+        image: "palli/soa-router"
         ports:
             - 3001:3001
     auth:
