@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
 import { AppService } from './app.service';
 import { CreateAnswerDto } from "./create-answer.dto";
 import { CreateQuestionDto } from "./create-question.dto";
+import { CreateKeywordDto } from "./create-keyword.dto";
 
 @Controller()
 export class AppController {
@@ -68,5 +69,10 @@ export class AppController {
   @Delete('answer/:id')
   async removeA(@Param('id') id: string) {
     return (await this.appService.removeQuestionMan('answer', id)).data;
+  }
+
+  @Post('keyword')
+  async createK(@Body() createKeywordDto: CreateKeywordDto){
+    return (await this.appService.attachKeyword(createKeywordDto)).data;
   }
 }

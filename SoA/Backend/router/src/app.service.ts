@@ -1,6 +1,7 @@
 import { HttpService, Injectable } from "@nestjs/common";
 import { CreateQuestionDto } from "./create-question.dto";
 import { CreateAnswerDto } from "./create-answer.dto";
+import { CreateKeywordDto } from "./create-keyword.dto";
 
 @Injectable()
 export class AppService {
@@ -8,7 +9,7 @@ export class AppService {
   }
 
   signIn(username, password) {
-    return this.httpService.post(`http:/${process.env.AUTH_HOST}:${process.env.AUTH_PORT}/signin`,
+    return this.httpService.post(`http://${process.env.AUTH_HOST}:${process.env.AUTH_PORT}/signin`,
       {
         username: username,
         password: password
@@ -57,6 +58,14 @@ export class AppService {
         created: createAnswerDto.created,
         question: createAnswerDto.question,
         user: createAnswerDto.user
+      }).toPromise();
+  }
+
+  attachKeyword(createKeywordDto: CreateKeywordDto){
+    return this.httpService.post(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/keyword`,
+      {
+        word: createKeywordDto.word,
+        id: createKeywordDto.id
       }).toPromise();
   }
 }

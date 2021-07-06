@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5f229a9-d989-46af-abfe-758d2ac79b41" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data-layer/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/.dockerignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data-layer/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../question-man/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/../question-man/.dockerignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../router/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/../router/.dockerignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data-layer/src/question/dto/create-question.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/question/dto/create-question.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data-layer/src/question/entities/question.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/question/entities/question.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../router/src/app.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../router/src/app.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +42,7 @@
       <workItem from="1625079704005" duration="1806000" />
       <workItem from="1625083065202" duration="234000" />
       <workItem from="1625157906230" duration="778000" />
-      <workItem from="1625589277430" duration="1709000" />
+      <workItem from="1625589277430" duration="3267000" />
     </task>
     <servers />
   </component>

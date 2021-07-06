@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 import { Answer } from '../../answer/entities/answer.entity';
 import { User } from "../../user/entities/user.entity";
+import { Keyword } from "../../keyword/entities/keyword.entity";
 
 @Entity()
 export class Question {
@@ -29,4 +30,7 @@ export class Question {
 
   @OneToMany(() => Answer, (answer) => answer.question)
   answers: Answer[];
+
+  @OneToMany(() => Keyword, (keyword) => keyword.id)
+  keywords: Keyword[];
 }

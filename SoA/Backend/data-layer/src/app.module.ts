@@ -7,6 +7,7 @@ import { QuestionModule } from './question/question.module';
 import { AnswerModule } from './answer/answer.module';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
+import { KeywordModule } from './keyword/keyword.module';
 
 @Module({
   imports: [QuestionModule,
@@ -27,6 +28,7 @@ import { ConfigModule } from '@nestjs/config';
     AnswerModule,
     UserModule,
     HttpModule,
+    KeywordModule,
   ],
   controllers: [AppController],
   providers: [AppService, UserService],
