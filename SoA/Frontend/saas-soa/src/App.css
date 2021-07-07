@@ -688,6 +688,7 @@ width:200px;
 
 .profile_links{
 margin-top: -340px;
+margin-bottom: 50px;
 
 }
 
@@ -949,4 +950,9 @@ margin-top: -340px;
       margin-top: 0px;
       padding-bottom: 50px;
 
+      }
+
+      .form-button-2 button:hover{
+        background: #4f4b48;
+        cursor: pointer;
       }

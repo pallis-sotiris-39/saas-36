@@ -73,6 +73,7 @@ function Question(){
                       <form>
                         <div className = "A_test">
                         <BodyField
+                        placeholder="Contribute to the conversation!"
                         />
                         </div>
                       </form>

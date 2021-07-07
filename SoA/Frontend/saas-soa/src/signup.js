@@ -40,6 +40,8 @@ class Signup extends React.Component {
 
 
 
+
+
   async doLogin(){
       console.log(this.state.username);
       if(!this.state.username) return;
@@ -58,7 +60,7 @@ class Signup extends React.Component {
               mode: 'cors',
               method: 'post',
               headers:{
-                 'Content-Type': 'application/x-www-form-urlencoded',
+                 'Content-Type': 'application/json',
                  'Accept': 'application/json'
               },
               body:JSON.stringify({
@@ -73,12 +75,13 @@ class Signup extends React.Component {
 
           console.log(res);
           console.log(this.state.password);
+          console.log(this.state.email);
 
           let result = await res.json();
           let status = await res.status;
           console.log(result);
           console.log(status);
-          if (status == 200){
+          if (status == 201 ){
             console.log('yaaass');
             this.props.history.push("/");
             window.location.reload(false);
@@ -185,7 +188,6 @@ class Signup extends React.Component {
                     <SubmitButton
                         text='Sign up'
                         className = 'test-button'
-                        disabled={this.state.buttonDisabled}
                         onClick={() => this.doLogin()}
                     />
                     <br/>
