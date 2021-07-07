@@ -10,7 +10,7 @@ import { withCookies, Cookies } from 'react-cookie';
 class Login extends React.Component {
 
   constructor(props){
-    console.log(document.cookie);
+    console.log(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/signin`);
       super(props);
       this.state={
           username:'',
@@ -46,7 +46,7 @@ class Login extends React.Component {
 
       try{
 
-          let res = await fetch(`http://localhost:3001/signin`, {
+          let res = await fetch(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/signin`, {
               mode: 'cors',
               method: 'post',
               headers:{

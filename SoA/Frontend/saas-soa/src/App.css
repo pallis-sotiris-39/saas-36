@@ -314,6 +314,7 @@ header nav ul li a {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
   display: table;
 }
 
@@ -324,6 +325,7 @@ header nav ul li a {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
   display: table;
 }
 
@@ -622,7 +624,7 @@ footer ul li a:hover {
   height: 300px;
   background: #111;
   color: #111;
-  margin-left: 100px;
+  margin-left: 1350px;
   margin-top: 40px;
   margin-bottom: 40px;
   border-radius: 5px;
@@ -684,6 +686,11 @@ margin-top: 15px;
 width:200px;
 }
 
+.profile_links{
+margin-top: -340px;
+
+}
+
 /* SIGN UP */
 
 .signup-box{
@@ -741,3 +748,57 @@ width:200px;
   padding-left: 75px;
   align-content: center;
 }
+
+/* profile links */
+.station-box{
+  width: 700px;
+  background: #111;
+  color: #111;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.station-box h2{
+  margin: 0;
+  padding: 0;
+  padding-top: 20px;
+  padding-left: 20px;
+  font-family: Catamaran;
+  font-size: 25px;
+  color: #fff;
+  font-weight: bolder;
+}
+
+.station-box p{
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: Catamaran;
+    font-size: 15px;
+    color: #f3f3f3;
+  }
+
+  .station-box i{
+      margin: 0;
+      padding: 0;
+      padding-top: 10px;
+      padding-left: 20px;
+      font-family: Catamaran;
+      font-size: 15px;
+      color: #111;
+    }
+
+    .station-box i:hover{
+        color: #c2c2c2;
+      }
+
+    .station-box:hover{
+      box-shadow: 0 0 1pt 1pt #f3f3f3;
+    }
