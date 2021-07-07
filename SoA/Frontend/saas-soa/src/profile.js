@@ -5,7 +5,7 @@ import InputField from './InputField.js';
 import SubmitButton from './SubmitButton.js';
 import TitleField from './TitleField';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, useLocation } from "react-router-dom";
 import { withCookies, Cookies } from 'react-cookie';
 
 class Profile extends React.Component{
@@ -70,10 +70,21 @@ class Profile extends React.Component{
                     </div>
                     <div className="profile_links">
                     {this.state.data.map(el => (
-                      <div className="station-box">
+                        <div className="station-box">
+
+                        <Link to ={{
+                              pathname: `Question_${el.id}`,
+                              state: {
+                                  Q_title: el.title,
+                                  Q_text: el.text,
+                                  Q_id: el.id
+                              }
+                            }} className="Link_Style">
                           <h2>  {el.title} </h2>
                           <p> {el.text} </p>
-                    </div>
+                        </Link>
+                        </div>
+
                     ))}
                     </div>
                 </section>
