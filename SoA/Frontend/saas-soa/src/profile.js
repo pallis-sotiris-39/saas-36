@@ -5,18 +5,19 @@ import InputField from './InputField.js';
 import SubmitButton from './SubmitButton.js';
 import TitleField from './TitleField';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import { Redirect, useHistory, useLocation } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { withCookies, Cookies } from 'react-cookie';
 
 class Profile extends React.Component{
 
   constructor(props){
+    console.log(document.cookie);
       super(props);
       this.state={
-          data: []
+          title:'',
+          tags:''
         }
   }
-
 
  setInputValue(property, val){
     this.setState({
@@ -24,18 +25,44 @@ class Profile extends React.Component{
     })
   }
 
-  async componentDidMount(){
-          let res = await fetch(`http://localhost:3001/question`, {
+  async askme(){
+      console.log(this.state.title);
+      console.log(this.state.tags);
+      console.log(this.state.body);
+      try{
+
+          let res = await fetch(`http://localhost:3002/question`, {
               method: 'get',
               headers:{
                 'Content-Type': 'application/json'
               }
 
           });
-          const json = await res.json();
-          this.setState({data: json});
-          console.log("HELLOOOO");
-          console.log(this.state.data);
+
+          console.log(res);
+
+          let result = await res.json();
+          let status = await res.status;
+          console.log(result);
+          console.log(status);
+          if (status == 201){
+            console.log('yaaass');
+            this.props.history.push("/");
+            window.location.reload(false);
+          }
+          else{
+              this.resetForm();
+              alert(result.msg);
+          }
+
+      }
+      catch(e){
+          console.log(e);
+          this.resetForm();
+      }
+
+
+
 }
 
   render(){
@@ -51,6 +78,7 @@ class Profile extends React.Component{
                 return Object.assign(res, { [key]: val })
               }
             }, {});
+          console.log(x.username);
           return (
               <main>
                 <section className="blur-banner">
@@ -67,25 +95,6 @@ class Profile extends React.Component{
                             </Link>
                               <button className="questions">Profile settings</button>
 
-                    </div>
-                    <div className="profile_links">
-                    {this.state.data.map(el => (
-                        <div className="station-box">
-
-                        <Link to ={{
-                              pathname: `Question_${el.id}`,
-                              state: {
-                                  Q_title: el.title,
-                                  Q_text: el.text,
-                                  Q_id: el.id
-                              }
-                            }} className="Link_Style">
-                          <h2>  {el.title} </h2>
-                          <p> {el.text} </p>
-                        </Link>
-                        </div>
-
-                    ))}
                     </div>
                 </section>
               </main>

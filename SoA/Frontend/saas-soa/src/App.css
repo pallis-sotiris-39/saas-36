@@ -314,7 +314,6 @@ header nav ul li a {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
   display: table;
 }
 
@@ -325,7 +324,6 @@ header nav ul li a {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
   display: table;
 }
 
@@ -624,7 +622,7 @@ footer ul li a:hover {
   height: 300px;
   background: #111;
   color: #111;
-  margin-left: 1325px;
+  margin-left: 100px;
   margin-top: 40px;
   margin-bottom: 40px;
   border-radius: 5px;
@@ -686,12 +684,6 @@ margin-top: 15px;
 width:200px;
 }
 
-.profile_links{
-margin-top: -340px;
-margin-bottom: 50px;
-
-}
-
 /* SIGN UP */
 
 .signup-box{
@@ -749,210 +741,3 @@ margin-bottom: 50px;
   padding-left: 75px;
   align-content: center;
 }
-
-/* profile links */
-.station-box{
-  width: 700px;
-  background: #111;
-  color: #111;
-  margin: auto;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-}
-
-.station-box h2{
-  margin: 0;
-  padding: 0;
-  padding-top: 20px;
-  padding-left: 20px;
-  font-family: Catamaran;
-  font-size: 25px;
-  color: #fff;
-  font-weight: bolder;
-}
-
-.station-box p{
-    margin: 0;
-    padding: 0;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-family: Catamaran;
-    font-size: 15px;
-    color: #f3f3f3;
-  }
-
-  .station-box i{
-      margin: 0;
-      padding: 0;
-      padding-top: 10px;
-      padding-left: 20px;
-      font-family: Catamaran;
-      font-size: 15px;
-      color: #111;
-    }
-
-    .station-box i:hover{
-        color: #c2c2c2;
-      }
-
-    .station-box:hover{
-      box-shadow: 0 0 1pt 1pt #f3f3f3;
-    }
-
-    .Link_Style{
-      text-decoration: none;
-    }
-
-
-    /*  Question   */
-
-    .Qbox{
-      width: 700px;
-      background: #111;
-      color: #111;
-      margin: auto;
-      margin-top: 50px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-
-.Qbox h2{
-  margin: 0;
-  padding: 0;
-  padding-top: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 5px;
-  font-family: Catamaran;
-  font-size: 25px;
-  color: #fff;
-  font-weight: bolder;
-}
-
-.Qbox p{
-    line-height: 20pt;
-    margin: 0;
-    padding: 0;
-    padding-top: 10px;
-    padding-bottom: 25px;
-    padding-left: 30px;
-    padding-right: 30px;
-    font-family: Catamaran;
-    font-size: 20px;
-    color: #f3f3f3;
-  }
-
-  .Qbox i{
-      margin: 0;
-      padding: 0;
-      padding-top: 10px;
-      padding-left: 20px;
-      font-family: Catamaran;
-      font-size: 15px;
-      color: #111;
-    }
-
-    .Qbox i:hover{
-        color: #c2c2c2;
-      }
-
-  .Qbox form{
-          padding-left: 30px;
-          padding-right: 30px;
-          padding-bottom: 0px;
-          align-content: center;
-}
-
-.A_test{
-  width: 200px;
-}
-
-.A_test textarea{
-  width: 625px;
-}
-
-.Qbox button{
-  border: none;
-  outline: none;
-  height: 40px;
-  width: 100px;
-  color: #f3f3f3;
-  background: #35312e;
-  font-family: Catamaran;
-  font-size: 15px;
-  border-radius: 5px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-.form-button-2{
-  padding-left: 30px;
-}
-
-/* ANSWER BOX */
-.answer_box{
-  width: 700px;
-  background: #111;
-  color: #111;
-  margin: auto;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-}
-
-.answer_box h2{
-  margin: 0;
-  padding: 0;
-  padding-top: 20px;
-  padding-left: 20px;
-  font-family: Catamaran;
-  font-size: 20px;
-  color: #fff;
-  font-weight: bolder;
-}
-
-.answer_box p{
-    margin: 0;
-    padding: 0;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-family: Catamaran;
-    font-size: 18px;
-    color: #f3f3f3;
-  }
-
-  .answer_box i{
-      margin: 0;
-      padding: 0;
-      padding-top: 10px;
-      padding-left: 20px;
-      font-family: Catamaran;
-      font-size: 15px;
-      color: #111;
-    }
-
-    .answer_box i:hover{
-        color: #c2c2c2;
-      }
-
-      .answer_links{
-      margin-top: 0px;
-      padding-bottom: 50px;
-
-      }
-
-      .form-button-2 button:hover{
-        background: #4f4b48;
-        cursor: pointer;
-      }

@@ -10,12 +10,12 @@ import 'simplebar';
 class Header extends React.Component {
 
 
+  constructor(props) {
+   super(props);
+   this.state={
 
- setInputValue(property, val){
-    this.setState({
-         [property]: val
-    })
-  }
+     }
+ }
 
   async doLogout(){
     document.cookie ="token=";
@@ -23,25 +23,6 @@ class Header extends React.Component {
     this.props.history.push('/');
     window.location.reload(false);
 }
-
-constructor(props) {
-      super(props);
-      this.state = {value:''}
-
-      this.handleChange = this.handleChange.bind(this);
-      this.keyPress = this.keyPress.bind(this);
-   }
-
-   handleChange(e) {
-      this.setState({ value: e.target.value });
-   }
-
-   keyPress(e){
-      if(e.keyCode == 13){
-         console.log('value', e.target.value);
-         // put the login here
-      }
-   }
 
   render(){
 
@@ -93,13 +74,9 @@ constructor(props) {
                   </div>
                   <div className='searchbar'>
                     <input
-                      tabIndex="0"
                       type="text"
                       className='search'
                       placeholder="search for a keyword"
-                      value={this.state.value}
-                      onKeyDown={this.keyPress}
-                      onChange={this.handleChange}
                     />
 
                   </div>
@@ -132,18 +109,12 @@ constructor(props) {
                 </div>
                 <div className='searchbar'>
                   <input
-                    tabIndex="0"
                     type="text"
                     className='search'
                     placeholder="search for a keyword"
-                    value={this.state.value}
-                    onKeyDown={this.keyPress}
-                    onChange={this.handleChange}
-
                   />
 
                 </div>
-
                 </ul>
           </nav>
       </header>
