@@ -10,6 +10,7 @@ class BodyField extends React.Component{
                       className = "body"
                       cols="50"
                       rows="10"
+                      placeholder={this.props.placeholder}
                       value={this.props.value}
                       onChange={(e) => this.props.onChange(e.target.value)}
                   />
