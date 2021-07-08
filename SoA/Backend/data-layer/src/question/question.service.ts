@@ -23,18 +23,18 @@ export class QuestionService {
   }
 
   async findAll() : Promise<Question[]> {
-    return this.manager.find(Question, {relations: ["keywords"]});
+    return this.manager.find(Question, {relations: ["user", "answers", "keywords"]});
   }
 
   async findOne(id: number) : Promise<Question> {
-    const question = await this.manager.findOne(Question, id, {relations: ["user", "answers"]})
+    const question = await this.manager.findOne(Question, id, {relations: ["user", "answers", "keywords"]})
     if (!question) throw new NotFoundException(`Question with id: ${id} not found`)
     return question;
   }
 
   async remove(id: number) : Promise<void>{
     return this.manager.transaction(async manager => {
-      const question = await manager.findOne(Question, id, {relations: ["user", "answers"]})
+      const question = await manager.findOne(Question, id);
       if (!question) throw new NotFoundException(`Question with id: ${id} not found`)
       await manager.delete(Question, id);
     });

@@ -90,4 +90,9 @@ export class AppController {
   async getOneUser(@Param('id') id: string){
     return (await this.appService.getQuestionManOne('user', id)).data;
   }
+
+  @Get('keyword/word/:word')
+  async getKeywordWord(@Param('word') word:string){
+    return (await this.appService.getQuestionManOne('keyword/word', word)).data;
+  }
 }

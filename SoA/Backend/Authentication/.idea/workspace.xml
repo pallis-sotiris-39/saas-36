@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5f229a9-d989-46af-abfe-758d2ac79b41" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data-layer/src/answer/answer.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/answer/answer.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data-layer/src/keyword/keyword.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/keyword/keyword.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data-layer/src/keyword/keyword.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/keyword/keyword.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data-layer/src/question/entities/question.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/question/entities/question.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data-layer/src/question/question.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/question/question.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data-layer/src/question/question.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/question/question.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data-layer/src/user/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/user/user.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data-layer/src/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../data-layer/src/user/user.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../question-man/src/app.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../question-man/src/app.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../router/src/app.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../router/src/app.controller.ts" afterDir="false" />
     </list>
@@ -49,7 +44,7 @@
       <workItem from="1625083065202" duration="234000" />
       <workItem from="1625157906230" duration="778000" />
       <workItem from="1625589277430" duration="3267000" />
-      <workItem from="1625768875747" duration="418000" />
+      <workItem from="1625768875747" duration="1010000" />
     </task>
     <servers />
   </component>

@@ -28,7 +28,17 @@ export class KeywordService {
     return keyword;
   }
 
-  remove(id: number) {
-    return this.mana
+  async remove(id: number): Promise<void> {
+    return this.manager.transaction(async manager => {
+      const keyword = await manager.findOne(Keyword, id);
+      if (!keyword) throw new NotFoundException(`Keyword with id: ${id} not found`);
+      await manager.delete(Keyword, id);
+    })
+  }
+
+  async findOneWord(word: string): Promise<Keyword> {
+    const keyword = await this.manager.findOne(Keyword, {keyword: word}, {relations: ["questions"]});
+    if(!keyword) throw new NotFoundException(`Questions with keyword ${word} not found`)
+    return keyword;
   }
 }

@@ -35,4 +35,26 @@ export class KeywordController {
       }, err.statusCode)
     });
   }
+
+  @Get('/word/:word')
+  findOneWord(@Param('word') word: string){
+    return this.keywordService.findOneWord(word).catch(err => {
+        throw new HttpException({
+          message: err.message,
+
+        }, err.statusCode)
+      }
+
+    );
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.keywordService.remove(+id).catch(err => {
+      throw new HttpException({
+        message: err.message,
+
+      }, err.statusCode)
+    });
+  }
 }
