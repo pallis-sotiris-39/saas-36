@@ -85,4 +85,9 @@ export class AppController {
   async createK(@Body() createKeywordDto: CreateKeywordDto){
     return (await this.appService.attachKeyword(createKeywordDto)).data;
   }
+
+  @Get('user/:id')
+  async getOneUser(@Param('id') id: string){
+    return (await this.appService.getQuestionManOne('user', id)).data;
+  }
 }

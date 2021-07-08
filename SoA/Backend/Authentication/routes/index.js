@@ -25,7 +25,7 @@ passport.use('signin', new LocalStrategy(async function (username, password, don
             if(err){
                 throw err
             }
-            return result ?  done(null, {username: username}) : done(null, false)
+            return result ?  done(null, {username: username, userId: res.rows[0].id}) : done(null, false)
         })
     }catch (e) {
         throw e
@@ -48,6 +48,7 @@ router.post('/signin',
     function(req, res, next) {
         res.header('Access-Control-Allow-Origin', req.headers.origin);
         res.json({
+            userId: req.user.userId,
             token: jwt.sign(req.user, JWT_SECRET, { expiresIn: 3600 })
         });
     }

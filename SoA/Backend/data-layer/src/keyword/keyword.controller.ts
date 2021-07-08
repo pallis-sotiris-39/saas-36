@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpException } from "@nestjs/common";
 import { KeywordService } from './keyword.service';
 import { CreateKeywordDto } from './dto/create-keyword.dto';
 
@@ -8,17 +8,31 @@ export class KeywordController {
 
   @Post()
   create(@Body() createKeywordDto: CreateKeywordDto) {
-    console.log(createKeywordDto);
-    return this.keywordService.create(createKeywordDto);
+    return this.keywordService.create(createKeywordDto).catch(err => {
+      throw new HttpException({
+        message: err.message,
+
+      }, err.statusCode)
+    });
   }
 
   @Get()
   findAll() {
-    return this.keywordService.findAll();
+    return this.keywordService.findAll().catch(err => {
+      throw new HttpException({
+        message: err.message,
+
+      }, err.statusCode)
+    });
   }
 
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.keywordService.findOne(id);
+    return this.keywordService.findOne(id).catch(err => {
+      throw new HttpException({
+        message: err.message,
+
+      }, err.statusCode)
+    });
   }
 }

@@ -4,9 +4,8 @@ import {
   Post,
   Body,
   Param,
-  Delete
+  Delete, HttpException, HttpStatus
 } from "@nestjs/common";
-import { Request, Response } from 'express';
 import { QuestionService } from './question.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
 
@@ -16,28 +15,41 @@ export class QuestionController {
 
   @Post()
   async create(@Body() createQuestionDto: CreateQuestionDto) {
-    return await this.questionService.create(createQuestionDto);
+    return await this.questionService.create(createQuestionDto).catch(err => {
+      throw new HttpException({
+        message: err.message,
+
+      }, HttpStatus.BAD_REQUEST)
+    });
   }
 
-  @Post('attach')
-  async attach(
-    @Body('keywords') keywords: string[],
-    @Body('id') id: number
-  ){
-    return await this.questionService.attach(keywords, id);
-  }
   @Get()
   async findAll() {
-    return await this.questionService.findAll();
+    return await this.questionService.findAll().catch(err => {
+      throw new HttpException({
+        message: err.message,
+
+      }, err.statusCode)
+    });
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return await this.questionService.findOne(+id);
+    return await this.questionService.findOne(+id).catch(err => {
+      throw new HttpException({
+        message: err.message,
+
+      }, err.statusCode)
+    });
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.questionService.remove(+id);
+    return this.questionService.remove(+id).catch(err => {
+      throw new HttpException({
+        message: err.message,
+
+      }, err.statusCode)
+    });
   }
 }

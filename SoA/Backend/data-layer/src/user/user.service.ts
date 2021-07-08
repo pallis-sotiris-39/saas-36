@@ -12,7 +12,6 @@ export class UserService {
   }
 
   async findOne(userID: number): Promise<User> {
-    console.log("I'm here and id is: " + userID)
-    return this.manager.findOne(User, userID);
+    return this.manager.findOne(User, userID, {relations: ["questions", "answers"]});
   }
 }

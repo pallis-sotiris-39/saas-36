@@ -1,4 +1,4 @@
-import { Controller, Get, Param} from '@nestjs/common';
+import { Controller, Get, HttpException, Param } from "@nestjs/common";
 import { UserService } from './user.service';
 
 @Controller('user')
@@ -7,11 +7,21 @@ export class UserController {
 
   @Get()
   findAll() {
-    return this.userService.findAll();
+    return this.userService.findAll().catch(err => {
+      throw new HttpException({
+        message: err.message,
+
+      }, err.statusCode)
+    });
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
+    return this.userService.findOne(+id).catch(err => {
+      throw new HttpException({
+        message: err.message,
+
+      }, err.statusCode)
+    });
   }
 }

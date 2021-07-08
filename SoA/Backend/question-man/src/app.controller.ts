@@ -66,4 +66,9 @@ export class AppController {
   async removeA(@Param('id') id: string) {
     return (await this.appService.removeQuestionMan('answer', id)).data;
   }
+
+  @Get('user/:id')
+  async getOneUser(@Param('id') id: string){
+    return (await this.appService.getQuestionManOne('user', id)).data;
+  }
 }
