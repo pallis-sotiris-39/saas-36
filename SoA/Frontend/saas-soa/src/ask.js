@@ -5,6 +5,7 @@ import InputField from './InputField.js';
 import SubmitButton from './SubmitButton.js';
 import TitleField from './TitleField';
 import BodyField from './BodyField';
+import moment from "moment";
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import { Redirect, useHistory } from "react-router-dom";
 import { withCookies, Cookies } from 'react-cookie';
@@ -40,9 +41,11 @@ class Ask extends React.Component{
       console.log(this.state.title);
       console.log(this.state.tags);
       console.log(this.state.body);
+      const date_create =  moment().format("DD-MM-YYYY hh:mm:ss")
+
       try{
 
-          let res = await fetch(`http://localhost:3002/question`, {
+          let res = await fetch(`http://localhost:3001/question`, {
               method: 'post',
               headers:{
                 'Content-Type': 'application/json',
@@ -50,8 +53,11 @@ class Ask extends React.Component{
               },
               body:JSON.stringify({
                 "title": `${this.state.title}`,
-                "body": `${this.state.body}`,
-                "tags": `${this.state.tags}`
+                "text": `${this.state.body}`,
+                "created": date_create,
+                "user": {
+                    "id" : 2
+                }
               })
 
           });
