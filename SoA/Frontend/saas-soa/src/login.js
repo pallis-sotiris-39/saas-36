@@ -72,6 +72,7 @@ class Login extends React.Component {
             document.cookie=`username = ${this.state.username}`;
             document.cookie='flag=true';
             document.cookie=`token = ${result.token}`;
+            document.cookie=`user_id = ${result.userId}`;
             let x = document.cookie
               .split(';')
               .reduce((res, c) => {

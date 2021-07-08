@@ -64,7 +64,7 @@ function Question(){
               body:JSON.stringify({
                   "text": text,
                   "user": {
-                      "id" : 2
+                      "id" : x.user_id
                   } ,
                   "question":{
                       "id" : location.state.Q_id
@@ -136,7 +136,7 @@ function Question(){
                     <div className="answer_links">
                     {items.map(el => (
                         <div className="answer_box">
-                          <h2> username </h2>
+                          <h2> {el.user.username} </h2>
                           <p> {el.text} </p>
                         </div>
 

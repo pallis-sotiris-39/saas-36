@@ -14,6 +14,7 @@ class Ask extends React.Component{
 
   constructor(props){
     console.log(document.cookie);
+
       super(props);
       this.state={
           title:'',
@@ -44,6 +45,18 @@ class Ask extends React.Component{
       const date_create =  moment().format("DD-MM-YYYY hh:mm:ss")
 
       try{
+        let x = document.cookie
+          .split(';')
+          .reduce((res, c) => {
+            const [key, val] = c.trim().split('=').map(decodeURIComponent)
+            const allNumbers = str => /^\d+$/.test(str);
+            try {
+              return Object.assign(res, { [key]: allNumbers(val) ?  val : JSON.parse(val) })
+            } catch (e) {
+              return Object.assign(res, { [key]: val })
+            }
+          }, {});
+          console.log(x.userId);
 
           let res = await fetch(`http://localhost:3001/question`, {
               method: 'post',
@@ -56,8 +69,9 @@ class Ask extends React.Component{
                 "text": `${this.state.body}`,
                 "created": date_create,
                 "user": {
-                    "id" : 2
-                }
+                    "id" : `${x.user_id}`
+                },
+                "keywords":[]
               })
 
           });
