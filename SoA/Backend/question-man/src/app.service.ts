@@ -21,19 +21,14 @@ export class AppService {
 
   createQ(createQuestionDto: CreateQuestionDto) {
     return this.httpService.post(`http://${process.env.DATA_LAYER_HOST}:${process.env.DATA_LAYER_PORT}/question`,
-      {
-        title: createQuestionDto.title,
-        text: createQuestionDto.text,
-        created: createQuestionDto.created,
-        user: createQuestionDto.user
-      }).toPromise();
+      createQuestionDto).toPromise();
   }
 
-  attachKeyword(keyword: string, id: number){
+  attachKeyword(keyword: string, questionid: number){
     return this.httpService.post(`http://${process.env.DATA_LAYER_HOST}:${process.env.DATA_LAYER_PORT}/keyword`,
       {
         keyword: keyword,
-        id: id
+        questionid: questionid
       }).toPromise();
   }
 

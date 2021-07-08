@@ -27,13 +27,24 @@ export class AppController {
     return (await this.appService.removeQuestionMan('question', id)).data;
   }
 
+  @Get('keyword')
+  async findAllK(){
+    return (await this.appService.getQuestionManNoParams('keyword')).data;
+  }
+
+  @Get('keyword/:id')
+  async findOneK(@Param('id') id: string){
+    return (await this.appService.getQuestionManOne('keyword', id)).data;
+  }
+
   @Post('keyword')
   async attachKeyword
   (
     @Body('keyword') keyword: string,
-    @Body('id') id: number
+    @Body('questionid') questionid: number
   ){
-    return (await this.appService.attachKeyword(keyword, id)).data;
+    console.log(keyword, questionid)
+    return (await this.appService.attachKeyword(keyword, questionid)).data;
   }
 
   @Post('answer')

@@ -42,13 +42,7 @@ export class AppService {
 
   createQ(createQuestionDto: CreateQuestionDto) {
     return this.httpService.post(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/question`,
-      {
-        title: createQuestionDto.title,
-        text: createQuestionDto.text,
-        created: createQuestionDto.created,
-        keywords: createQuestionDto.keywords,
-        user: createQuestionDto.user
-      }).toPromise();
+      createQuestionDto).toPromise();
   }
 
   createA(createAnswerDto: CreateAnswerDto) {
@@ -62,10 +56,11 @@ export class AppService {
   }
 
   attachKeyword(createKeywordDto: CreateKeywordDto){
+    console.log(createKeywordDto);
     return this.httpService.post(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/keyword`,
       {
-        word: createKeywordDto.word,
-        id: createKeywordDto.id
+        keyword: createKeywordDto.keyword,
+        questionid: createKeywordDto.questionid
       }).toPromise();
   }
 }

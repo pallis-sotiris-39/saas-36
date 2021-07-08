@@ -1,4 +1,4 @@
 export class CreateKeywordDto {
-  readonly word: string;
-  readonly id: number;
+  readonly keyword: string;
+  readonly questionid: number;
 }

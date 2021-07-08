@@ -1,11 +1,34 @@
-import { Column, JoinColumn, ManyToOne } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  PrimaryColumn,
+  PrimaryGeneratedColumn
+} from "typeorm";
 import { Question } from "../../question/entities/question.entity";
 
+@Entity()
 export class Keyword {
-  @ManyToOne(() => Question, (question) => question.keywords)
-  @JoinColumn({ name: 'id' })
-  id: number
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Column({unique: true})
-  word: string;
+  @Column()
+  keyword: string;
+
+  @ManyToMany(() => Question, (question) => question.keywords)
+  @JoinTable({
+    name: 'question_keyword',
+    joinColumn: {
+      name: 'keywordid',
+      referencedColumnName: 'id'
+    },
+    inverseJoinColumn: {
+      name: 'questionid',
+      referencedColumnName: 'id'
+    }
+  })
+  questions: Question[];
 }

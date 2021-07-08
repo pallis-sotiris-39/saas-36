@@ -19,12 +19,12 @@ export class KeywordService {
   }
 
   async findAll() {
-    return this.manager.find(Keyword);
+    return this.manager.find(Keyword, {relations: ["questions"]});
   }
 
-  async findOne(word: number) {
-    const keyword = await this.manager.findOne(Keyword, word, {relations: ["question"]});
-    if (!keyword) throw new NotFoundException(`Keyword ${word} not found`);
+  async findOne(id: number): Promise<Keyword> {
+    const keyword =  await this.manager.findOne(Keyword, id, {relations: ["questions"]})
+    if (!keyword) throw new NotFoundException(`Keyword with ${id} not found`);
     return keyword;
   }
 

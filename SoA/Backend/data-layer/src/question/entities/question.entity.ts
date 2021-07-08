@@ -1,7 +1,7 @@
 import {
   Column,
   Entity,
-  JoinColumn,
+  JoinColumn, JoinTable, ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn, Timestamp
@@ -31,6 +31,17 @@ export class Question {
   @OneToMany(() => Answer, (answer) => answer.question)
   answers: Answer[];
 
-  @OneToMany(() => Keyword, (keyword) => keyword.id)
+  @ManyToMany(() => Keyword, (keyword) => keyword.questions)
+  @JoinTable({
+    name: 'question_keyword',
+    joinColumn: {
+      name: 'questionid',
+      referencedColumnName: 'id'
+    },
+    inverseJoinColumn: {
+      name: 'keywordid',
+      referencedColumnName: 'id'
+    }
+  })
   keywords: Keyword[];
 }

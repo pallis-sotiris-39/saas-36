@@ -26,7 +26,7 @@ export class AnswerService {
   }
 
   async findAll() : Promise<Answer[]> {
-    return this.manager.find(Answer);
+    return this.manager.find(Answer, {relations: ["user"]});
   }
 
   async findOne(id: number) : Promise<Answer> {

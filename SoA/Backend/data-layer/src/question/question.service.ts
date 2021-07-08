@@ -34,7 +34,7 @@ export class QuestionService {
   }
 
   async findAll() : Promise<Question[]> {
-    return this.manager.find(Question);
+    return this.manager.find(Question, {relations: ["keywords"]});
   }
 
   async findOne(id: number) : Promise<Question> {

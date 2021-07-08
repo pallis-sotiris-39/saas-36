@@ -71,6 +71,16 @@ export class AppController {
     return (await this.appService.removeQuestionMan('answer', id)).data;
   }
 
+  @Get('keyword')
+  async findAllK(){
+    return (await this.appService.getQuestionManNoParams('keyword')).data;
+  }
+
+  @Get('keyword/:id')
+  async findOneK(@Param('id') id: string){
+    return (await this.appService.getQuestionManOne('keyword', id)).data;
+  }
+
   @Post('keyword')
   async createK(@Body() createKeywordDto: CreateKeywordDto){
     return (await this.appService.attachKeyword(createKeywordDto)).data;

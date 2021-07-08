@@ -65,7 +65,7 @@ services:
         container_name: "frontend"
         build: ./Frontend/saas-soa
         image: "palli/soa-frontend"
-        environment: 
+        environment:
             - "REACT_APP_ROUTER_HOST=router"
             - "REACT_APP_ROUTER_PORT=3001"
         ports:

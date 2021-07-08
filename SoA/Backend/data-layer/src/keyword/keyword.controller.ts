@@ -8,6 +8,7 @@ export class KeywordController {
 
   @Post()
   create(@Body() createKeywordDto: CreateKeywordDto) {
+    console.log(createKeywordDto);
     return this.keywordService.create(createKeywordDto);
   }
 
@@ -16,8 +17,8 @@ export class KeywordController {
     return this.keywordService.findAll();
   }
 
-  @Get(':word')
-  findOne(@Param('word') word: string) {
-    return this.keywordService.findOne(+word);
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.keywordService.findOne(id);
   }
 }
