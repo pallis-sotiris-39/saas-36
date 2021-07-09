@@ -25,6 +25,7 @@ function Question(){
         const [text, setText] = useState([]);
         const [items, setItems] = useState([]);
         const [more, setMore] = useState([]);
+        const [name, setName] = useState([]);
 
 
         const fetchColors = async () => {
@@ -49,13 +50,16 @@ function Question(){
 
           const items = await bigData.json();
           const more = items.answers;
+          const name = items.user;
 
           console.log(items);
           console.log(more);
           console.log(items.answers);
+          console.log(name.username);
           console.log("question id is", location.state.Q_id);
           setItems(items);
           setMore(more);
+          setName(name);
         }
 
         const askQuestion = async () => {
@@ -117,6 +121,7 @@ function Question(){
                     <div className = "Qbox">
                       <h2>  {items.title} </h2>
                       <p> {items.text} </p>
+                      <h1 className="submited"> submited by <b> {name.username} </b></h1>
                       <form>
                         <div className = "A_test">
                           <textarea
