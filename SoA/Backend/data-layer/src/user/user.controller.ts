@@ -1,4 +1,4 @@
-import { Controller, Get, HttpException, Param } from "@nestjs/common";
+import { Controller, Get, HttpException, HttpStatus, Param } from "@nestjs/common";
 import { UserService } from './user.service';
 
 @Controller('user')
@@ -7,19 +7,25 @@ export class UserController {
 
   @Get()
   findAll() {
-    return this.userService.findAll().catch(err => {
-      throw new HttpException({
-        message: err.message,
-      }, err.statusCode)
-    });
+    try {
+      return this.userService.findAll();
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id).catch(err => {
-      throw new HttpException({
-        message: err.message,
-      }, err.statusCode)
-    });
+    try {
+      return this.userService.findOne(+id);
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 }

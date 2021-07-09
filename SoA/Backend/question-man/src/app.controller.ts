@@ -9,56 +9,86 @@ export class AppController {
 
   @Post('question')
   async createQ(@Body() createQuestionDto: CreateQuestionDto) {
-    return (await this.appService.createQ(createQuestionDto).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+    try {
+      return (await this.appService.createQ(createQuestionDto)).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 
   @Get('question')
   async findAllQ() {
-    return (await this.appService.getQuestionManNoParams('question').catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+    try {
+      return (await this.appService.getQuestionManNoParams('question')).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 
   @Get('question/:id')
   async findOneQ(@Param('id') id: string) {
-    return (await this.appService.getQuestionManOne('question', id).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+    try {
+      return (await this.appService.getQuestionManOne('question', id)).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
+  }
+
+  @Get('answer/user/:id')
+  async findAnswersbyUserId(@Param('id') id: string){
+    try {
+      return (await this.appService.getQuestionManOne('answer/user', id)).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 
   @Delete('question/:id')
   async removeQ(@Param('id') id: string) {
-    return (await this.appService.removeQuestionMan('question', id).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+    try {
+      return (await this.appService.removeQuestionMan('question', id)).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 
   @Get('keyword')
   async findAllK(){
-    return (await this.appService.getQuestionManNoParams('keyword').catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+    try {
+      return (await this.appService.getQuestionManNoParams('keyword')).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 
-  @Get('keyword/:id')
-  async findOneK(@Param('id') id: string){
-    return (await this.appService.getQuestionManOne('keyword', id).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+  @Get('keyword/:word')
+  async findOneK(@Param('word') word: string){
+    try {
+      return (await this.appService.getQuestionManOne('keyword', word)).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 
   @Post('keyword')
@@ -68,64 +98,85 @@ export class AppController {
     @Body('questionid') questionid: number
   ){
     console.log(keyword, questionid)
-    return (await this.appService.attachKeyword(keyword, questionid).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+    try {
+      return (await this.appService.attachKeyword(keyword, questionid)).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 
   @Post('answer')
   async createA(@Body() createAnswerDto: CreateAnswerDto) {
-    return (await this.appService.createA(createAnswerDto).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+    try {
+      return (await this.appService.createA(createAnswerDto)).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 
   @Get('answer')
   async findAllA() {
-    return (await this.appService.getQuestionManNoParams('answer').catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+    try {
+      return (await this.appService.getQuestionManNoParams('answer')).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 
   @Get('answer/:id')
   async findOneA(@Param('id') id: string) {
-    return (await this.appService.getQuestionManOne('answer', id).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+    try {
+      return (await this.appService.getQuestionManOne('answer', id)).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 
   @Delete('answer/:id')
   async removeA(@Param('id') id: string) {
-    return (await this.appService.removeQuestionMan('answer', id).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+    try {
+      return (await this.appService.removeQuestionMan('answer', id)).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 
   @Get('user/:id')
   async getOneUser(@Param('id') id: string){
-    return (await this.appService.getQuestionManOne('user', id).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+    try {
+      return (await this.appService.getQuestionManOne('user', id)).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 
   @Get('keyword/word/:word')
   async getKeywordWord(@Param('word') word:string){
-    return (await this.appService.getQuestionManOne('keyword/word', word).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, HttpStatus.BAD_REQUEST);
-    })).data;
+    try {
+      return (await this.appService.getQuestionManOne('keyword/word', word)).data;
+    } catch (e) {
+      if (!e.response.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.response.data.message, e.response.data.statusCode);
+    }
   }
 }

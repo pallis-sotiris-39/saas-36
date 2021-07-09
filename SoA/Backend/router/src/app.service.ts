@@ -16,6 +16,15 @@ export class AppService {
       }).toPromise();
   }
 
+  whoami(token: string){
+    return this.httpService.get(`http://${process.env.AUTH_HOST}:${process.env.AUTH_PORT}/whoami`,
+      {
+        headers: {
+          Authorization: token
+        }
+      }).toPromise();
+  }
+
   signUp(first_name, last_name, birthday, email, username, password) {
     return this.httpService.post(`http://${process.env.AUTH_HOST}:${process.env.AUTH_PORT}/signup`,
       {
@@ -56,7 +65,6 @@ export class AppService {
   }
 
   attachKeyword(createKeywordDto: CreateKeywordDto){
-    console.log(createKeywordDto);
     return this.httpService.post(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/keyword`,
       {
         keyword: createKeywordDto.keyword,

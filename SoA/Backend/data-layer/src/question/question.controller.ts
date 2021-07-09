@@ -4,7 +4,7 @@ import {
   Post,
   Body,
   Param,
-  Delete, HttpException
+  Delete, HttpException, HttpStatus
 } from "@nestjs/common";
 import { QuestionService } from "./question.service";
 import { CreateQuestionDto } from "./dto/create-question.dto";
@@ -16,37 +16,50 @@ export class QuestionController {
 
   @Post()
   async create(@Body() createQuestionDto: CreateQuestionDto) {
-    return await this.questionService.create(createQuestionDto).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, err.statusCode);
-    });
+    try {
+      return await this.questionService.create(createQuestionDto);
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 
   @Get()
   async findAll() {
-    return await this.questionService.findAll().catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, err.statusCode);
-    });
+    try {
+      return await this.questionService.findAll();
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+  }
+
   }
 
   @Get(":id")
   async findOne(@Param("id") id: string) {
-    return await this.questionService.findOne(+id).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, err.statusCode);
-    });
+    try {
+      return await this.questionService.findOne(+id);
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 
   @Delete(":id")
   remove(@Param("id") id: string) {
-    return this.questionService.remove(+id).catch(err => {
-      throw new HttpException({
-        message: err.message
-      }, err.statusCode);
-    });
+    try {
+      return this.questionService.remove(+id);
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 }

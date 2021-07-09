@@ -31,7 +31,7 @@ export class Question {
   @OneToMany(() => Answer, (answer) => answer.question)
   answers: Answer[];
 
-  @ManyToMany(() => Keyword, (keyword) => keyword.questions, {cascade: true})
+  @ManyToMany(() => Keyword, (keyword) => keyword.questions, {cascade: true, onDelete: "CASCADE", orphanedRowAction: "delete"})
   @JoinTable({
     name: 'question_keyword',
     joinColumn: {
@@ -39,8 +39,8 @@ export class Question {
       referencedColumnName: 'id'
     },
     inverseJoinColumn: {
-      name: 'keywordid',
-      referencedColumnName: 'id'
+      name: 'keyword',
+      referencedColumnName: 'keyword'
     }
   })
   keywords: Keyword[];

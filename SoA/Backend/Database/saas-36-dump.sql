@@ -37,23 +37,12 @@ CREATE SEQUENCE public.question_id_seq
 ALTER SEQUENCE public.question_id_seq OWNED BY public.question.id;
 
 CREATE TABLE public.keyword (
-    id integer NOT NULL,
     keyword character varying(255) NOT NULL 
 );
 
-CREATE SEQUENCE public.keyword_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-ALTER SEQUENCE public.keyword_id_seq OWNED BY public.keyword.id;
-
 CREATE TABLE public.question_keyword (
     questionid integer NOT NULL,
-    keywordid integer NOT NULL
+    keyword character varying(255) NOT NULL
 );
 
 CREATE TABLE public."user" (
@@ -81,15 +70,13 @@ ALTER TABLE ONLY public.answer ALTER COLUMN id SET DEFAULT nextval('public.answe
 
 ALTER TABLE ONLY public.question ALTER COLUMN id SET DEFAULT nextval('public.question_id_seq'::regclass);
 
-ALTER TABLE ONLY public.keyword ALTER COLUMN id SET DEFAULT nextval('public.keyword_id_seq'::regclass);
-
 ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public.user_id_seq'::regclass);
 
 ALTER TABLE ONLY public.answer
     ADD CONSTRAINT answer_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY public.question_keyword
-    ADD CONSTRAINT question_keyword_pkey PRIMARY KEY (questionid, keywordid);
+    ADD CONSTRAINT question_keyword_pkey PRIMARY KEY (questionid, keyword);
 
 ALTER TABLE ONLY public.question
     ADD CONSTRAINT question_pkey PRIMARY KEY (id);
@@ -98,7 +85,7 @@ ALTER TABLE ONLY public.question
     ADD CONSTRAINT question_title_key UNIQUE (title);
 
 ALTER TABLE ONLY public.keyword
-    ADD CONSTRAINT keyword_key PRIMARY KEY (id);
+    ADD CONSTRAINT keyword_key PRIMARY KEY (keyword);
 
 ALTER TABLE ONLY public.keyword
     ADD CONSTRAINT keyword_unique UNIQUE (keyword);
@@ -125,4 +112,4 @@ ALTER TABLE ONLY public.question_keyword
     ADD CONSTRAINT fkquestion_k861823 FOREIGN KEY (questionid) REFERENCES public.question(id);
 
 ALTER TABLE ONLY public.question_keyword
-    ADD CONSTRAINT fkquestion_k861824 FOREIGN KEY (keywordid) REFERENCES public.keyword(id);
+    ADD CONSTRAINT fkquestion_k861824 FOREIGN KEY (keyword) REFERENCES public.keyword(keyword);

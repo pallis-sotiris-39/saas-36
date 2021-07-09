@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpException } from "@nestjs/common";
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpException, HttpStatus } from "@nestjs/common";
 import { KeywordService } from './keyword.service';
 import { CreateKeywordDto } from './dto/create-keyword.dto';
 
@@ -8,46 +8,49 @@ export class KeywordController {
 
   @Post()
   create(@Body() createKeywordDto: CreateKeywordDto) {
-    return this.keywordService.create(createKeywordDto).catch(err => {
-      throw new HttpException({
-        message: err.message,
-      }, err.statusCode)
-    });
+    try {
+      return this.keywordService.create(createKeywordDto);
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 
   @Get()
   findAll() {
-    return this.keywordService.findAll().catch(err => {
-      throw new HttpException({
-        message: err.message,
-      }, err.statusCode)
-    });
+    try {
+      return this.keywordService.findAll();
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.keywordService.findOne(id).catch(err => {
-      throw new HttpException({
-        message: err.message,
-      }, err.statusCode)
-    });
+  @Get(':word')
+  findOne(@Param('word') word: string) {
+    try {
+      return this.keywordService.findOne(word);
+    }catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 
-  @Get('/word/:word')
-  findOneWord(@Param('word') word: string){
-    return this.keywordService.findOneWord(word).catch(err => {
-        throw new HttpException({
-          message: err.message,
-        }, err.statusCode)
-      });
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.keywordService.remove(+id).catch(err => {
-      throw new HttpException({
-        message: err.message,
-      }, err.statusCode)
-    });
+  @Delete(':word')
+  remove(@Param('word') word: string) {
+    try {
+      return this.keywordService.remove(word);
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 }

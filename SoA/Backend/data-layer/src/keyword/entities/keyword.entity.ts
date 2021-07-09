@@ -12,18 +12,16 @@ import { Question } from "../../question/entities/question.entity";
 
 @Entity()
 export class Keyword {
-  @PrimaryGeneratedColumn()
-  id: number;
 
-  @Column()
+  @PrimaryColumn()
   keyword: string;
 
   @ManyToMany(() => Question, (question) => question.keywords)
   @JoinTable({
     name: 'question_keyword',
     joinColumn: {
-      name: 'keywordid',
-      referencedColumnName: 'id'
+      name: 'keyword',
+      referencedColumnName: 'keyword'
     },
     inverseJoinColumn: {
       name: 'questionid',

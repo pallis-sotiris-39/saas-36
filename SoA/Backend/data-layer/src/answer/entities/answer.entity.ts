@@ -13,6 +13,12 @@ export class Answer {
   @Column()
   created: string;
 
+  @Column()
+  user_fk:number;
+
+  @Column()
+  question_fk: number;
+
   @ManyToOne(() => User, (user) => user.answers)
   @JoinColumn({ name: 'user_fk' })
   user: User;
