@@ -92,7 +92,7 @@ class Profileq extends React.Component{
                               }
                             }} className="Link_Style">
                           <h2>  {el.title} </h2>
-                          <p> {el.text} </p>
+                          <p><b>Asked:</b> {el.text} </p>
                         </Link>
                         </div>
 

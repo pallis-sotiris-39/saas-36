@@ -14,7 +14,8 @@ class Profile extends React.Component{
       super(props);
       this.state={
           data: [],
-          data2: []
+          data2: [],
+          data3: []
         }
   }
 
@@ -46,10 +47,23 @@ class Profile extends React.Component{
           });
           const json = await res.json();
           this.setState({data: json.questions});
-          this.setState({data2: json.answers});
-          console.log("HELLOOOO");
           console.log(this.state.data);
+
+
+          let resA = await fetch(`http://localhost:3001/answer/user/${x.user_id}`, {
+              method: 'get',
+              headers:{
+                'Content-Type': 'application/json'
+              }
+
+          });
+          const json2 = await resA.json();
+          this.setState({data2: json2.question});
+          this.setState({data3: json2});
+          console.log("HELLOOOO");
+
 }
+
 
   render(){
 
@@ -99,18 +113,18 @@ class Profile extends React.Component{
                         </div>
 
                     ))}
-                    {this.state.data2.map(el => (
+                    {this.state.data3.map(el => (
                         <div className="station-box">
 
                         <Link to ={{
-                              pathname: `Question_${el.id}`,
+                              pathname: `Question_${el.question_fk}`,
                               state: {
-                                  Q_title: el.title,
-                                  Q_text: el.text,
-                                  Q_id: el.id
+                                  Q_title: el.question.title,
+                                  Q_text: el.question.text,
+                                  Q_id: el.question_fk
                               }
                             }} className="Link_Style">
-                          <h2>  {el.title} </h2>
+                          <h2>  {el.question.title} </h2>
                           <p> <b>Answered:</b> {el.text} </p>
                         </Link>
                         </div>

@@ -76,7 +76,8 @@ class Ask extends React.Component{
               method: 'post',
               headers:{
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${x.token}`
               },
               body:JSON.stringify({
                 "title": `${this.state.title}`,

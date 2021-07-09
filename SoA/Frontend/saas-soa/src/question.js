@@ -68,7 +68,8 @@ function Question(){
               method: 'post',
               headers:{
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${x.token}`
               },
               body:JSON.stringify({
                   "text": text,
@@ -146,7 +147,7 @@ function Question(){
                     <div className="answer_links">
                     {more.map(el => (
                         <div className="answer_box">
-                          <h2> {el.id} </h2>
+                          <h2> user {el.id} </h2>
                           <p> {el.text} </p>
                         </div>
 

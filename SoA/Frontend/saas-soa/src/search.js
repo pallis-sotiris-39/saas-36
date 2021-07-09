@@ -39,7 +39,7 @@ function Search(){
                 return Object.assign(res, { [key]: val })
               }
             }, {});
-          const bigData = await fetch(`http://localhost:3001/keyword/word/${location.state.keyword}`,{
+          const bigData = await fetch(`http://localhost:3001/keyword/${location.state.keyword}`,{
           method: 'get',
           headers:{
             'Content-Type': 'application/json'

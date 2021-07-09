@@ -13,7 +13,9 @@ class Profilea extends React.Component{
   constructor(props){
       super(props);
       this.state={
-          data: []
+          data: [],
+          data2: [],
+          data3: []
         }
   }
 
@@ -36,17 +38,17 @@ class Profilea extends React.Component{
               return Object.assign(res, { [key]: val })
             }
           }, {});
-          let res = await fetch(`http://localhost:3001/user/${x.user_id}`, {
+          let resA = await fetch(`http://localhost:3001/answer/user/${x.user_id}`, {
               method: 'get',
               headers:{
                 'Content-Type': 'application/json'
               }
 
           });
-          const json = await res.json();
-          this.setState({data: json.answers});
+          const json2 = await resA.json();
+          this.setState({data2: json2.question});
+          this.setState({data3: json2});
           console.log("HELLOOOO");
-          console.log(this.state.data);
 }
 
   render(){
@@ -80,19 +82,19 @@ class Profilea extends React.Component{
 
                     </div>
                     <div className="profile_links">
-                    {this.state.data.map(el => (
+                    {this.state.data3.map(el => (
                         <div className="station-box">
 
                         <Link to ={{
-                              pathname: `Question_${el.id}`,
+                              pathname: `Question_${el.question_fk}`,
                               state: {
-                                  Q_title: el.title,
-                                  Q_text: el.text,
-                                  Q_id: el.id
+                                  Q_title: el.question.title,
+                                  Q_text: el.question.text,
+                                  Q_id: el.question_fk
                               }
                             }} className="Link_Style">
-                          <h2>  {el.title} </h2>
-                          <p> {el.text} </p>
+                          <h2>  {el.question.title} </h2>
+                          <p><b>Answered:</b> {el.text} </p>
                         </Link>
                         </div>
 
