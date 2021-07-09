@@ -39,9 +39,23 @@ class Ask extends React.Component{
 
 
   async askme(){
+      if(!this.state.title) window.location.reload();
+      if(!this.state.body) window.location.reload();
+      if(!this.state.tags) window.location.reload();
       console.log(this.state.title);
       console.log(this.state.tags);
       console.log(this.state.body);
+      let arrayFinal = [];
+      let keywords = this.state.tags;
+      let kArray = keywords.split(" ");
+      console.log(kArray);
+      let kFinal = [];
+      for (let i = 0; i < kArray.length; i++){
+        let object = {};
+        object.keyword = kArray[i];
+        kFinal[i] = object
+      }
+      console.log(kFinal);
       const date_create =  moment().format("DD-MM-YYYY hh:mm:ss")
 
       try{
@@ -71,7 +85,7 @@ class Ask extends React.Component{
                 "user": {
                     "id" : `${x.user_id}`
                 },
-                "keywords":[]
+                "keywords": kFinal
               })
 
           });

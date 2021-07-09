@@ -38,9 +38,16 @@ constructor(props) {
 
    keyPress(e){
       if(e.keyCode == 13){
-         console.log('value', e.target.value);
-         // put the login here
-      }
+        let keyword = e.target.value;
+        console.log('value', keyword);
+        this.props.history.push({
+              pathname: `keyword_${keyword}`,
+              state: {
+                  keyword: keyword,
+
+              }
+            });
+        }
    }
 
   render(){
