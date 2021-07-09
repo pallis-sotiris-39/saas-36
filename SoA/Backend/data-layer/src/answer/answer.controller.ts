@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete, HttpException } from "@nestjs/common";
+import { Controller, Get, Post, Body, Param, Delete, HttpException, HttpStatus } from "@nestjs/common";
 import { AnswerService } from './answer.service';
 import { CreateAnswerDto } from './dto/create-answer.dto';
 
@@ -8,41 +8,62 @@ export class AnswerController {
 
   @Post()
   create(@Body() createAnswerDto: CreateAnswerDto) {
-    return this.answerService.create(createAnswerDto).catch(err => {
-      throw new HttpException({
-        message: err.message,
-
-      }, err.statusCode)
-    });
+    try {
+      return this.answerService.create(createAnswerDto);
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 
   @Get()
   findAll() {
-    return this.answerService.findAll().catch(err => {
-      throw new HttpException({
-        message: err.message,
-
-      }, err.statusCode)
-    });
+    try {
+      return this.answerService.findAll();
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.answerService.findOne(+id).catch(err => {
-      throw new HttpException({
-        message: err.message,
-
-      }, err.statusCode)
-    });
+    try {
+      return this.answerService.findOne(+id);
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.answerService.remove(+id).catch(err => {
-      throw new HttpException({
-        message: err.message,
-
-      }, err.statusCode)
-    });
+    try {
+      return this.answerService.remove(+id);
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
+
+  @Get('/user/:id')
+  getAnswersUser(@Param('id') id: string){
+    try {
+      return this.answerService.findByUserId(+id);
+    }catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
+  }
+
 }

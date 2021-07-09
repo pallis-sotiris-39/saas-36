@@ -6,50 +6,60 @@ import {
   Param,
   Delete, HttpException, HttpStatus
 } from "@nestjs/common";
-import { QuestionService } from './question.service';
-import { CreateQuestionDto } from './dto/create-question.dto';
+import { QuestionService } from "./question.service";
+import { CreateQuestionDto } from "./dto/create-question.dto";
 
-@Controller('question')
+@Controller("question")
 export class QuestionController {
-  constructor(private readonly questionService: QuestionService) {}
+  constructor(private readonly questionService: QuestionService) {
+  }
 
   @Post()
   async create(@Body() createQuestionDto: CreateQuestionDto) {
-    return await this.questionService.create(createQuestionDto).catch(err => {
-      throw new HttpException({
-        message: err.message,
-
-      }, HttpStatus.BAD_REQUEST)
-    });
+    try {
+      return await this.questionService.create(createQuestionDto);
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 
   @Get()
   async findAll() {
-    return await this.questionService.findAll().catch(err => {
-      throw new HttpException({
-        message: err.message,
-
-      }, err.statusCode)
-    });
+    try {
+      return await this.questionService.findAll();
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
-    return await this.questionService.findOne(+id).catch(err => {
-      throw new HttpException({
-        message: err.message,
-
-      }, err.statusCode)
-    });
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.questionService.remove(+id).catch(err => {
-      throw new HttpException({
-        message: err.message,
+  @Get(":id")
+  async findOne(@Param("id") id: string) {
+    try {
+      return await this.questionService.findOne(+id);
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
+  }
 
-      }, err.statusCode)
-    });
+  @Delete(":id")
+  remove(@Param("id") id: string) {
+    try {
+      return this.questionService.remove(+id);
+    } catch (e) {
+      if (!e.status){
+        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
+      }
+      throw new HttpException(e.message, e.status);
+    }
   }
 }

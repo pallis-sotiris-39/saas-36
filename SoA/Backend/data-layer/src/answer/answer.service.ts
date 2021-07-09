@@ -18,28 +18,32 @@ export class AnswerService {
       if(!userID) throw new BadRequestException('User id missing');
       const question = manager.findOne(Question, questionID);
       const user = manager.findOne(User, userID);
-      if(!question) throw new NotFoundException('Question with id: ${questionId} not found');
-      if(!user) throw new NotFoundException('User with id: ${userId} not found');
+      if(!question) throw new NotFoundException(`Question with id: ${questionID} not found`);
+      if(!user) throw new NotFoundException(`User with id: ${userID} not found`);
       const answer = await manager.create(Answer, createAnswerDto);
       return manager.save(answer);
     });
   }
 
   async findAll() : Promise<Answer[]> {
-    return this.manager.find(Answer, {relations: ["user"]});
+    return this.manager.find(Answer, {relations: ["question", "user"]});
   }
 
   async findOne(id: number) : Promise<Answer> {
     const answer = await this.manager.findOne(Answer, id, {relations: ["question", "user"]})
-    if (!answer) throw new NotFoundException('Answer with id: ${id} not found')
+    if (!answer) throw new NotFoundException(`Answer with id: ${id} not found`)
     return answer;
   }
 
   async remove(id: number) : Promise<void>{
     return this.manager.transaction(async manager => {
       const answer = await manager.findOne(Answer, id, {relations: ["question", "user"]})
-      if (!answer) throw new NotFoundException('Answer with id: ${id} not found')
+      if (!answer) throw new NotFoundException(`Answer with id: ${id} not found`)
       await manager.delete(Answer, id);
     });
+  }
+
+  async findByUserId(id: number) : Promise<Answer[]>{
+    return this.manager.find(Answer, {where: {user_fk: id}, relations: ["question", "user"]})
   }
 }
