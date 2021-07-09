@@ -12,6 +12,7 @@ import Profile from './profile';
 import Profileq from './profileq';
 import Profilea from './profilea';
 import Question from './question'
+import Search from './search'
 import './App.css';
 import 'simplebar';
 import 'simplebar/dist/simplebar.css';
@@ -37,6 +38,7 @@ class App extends React.Component {
             <Route path="/profile_a" component={Profilea}/>
             <Route path="/profile_q" component={Profileq}/>
             <Route path="/Question_:id" component={Question}/>
+            <Route path="/Keyword_:keyword" component={Search}/>
           </Switch>
           <Footer />
         </div>

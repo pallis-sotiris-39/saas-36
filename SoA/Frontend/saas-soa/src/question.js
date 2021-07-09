@@ -14,7 +14,6 @@ import { withCookies, Cookies } from 'react-cookie';
 function Question(){
 
         const location = useLocation()
-        console.log(location)
         const { fromNotifications } = location.state
         const [user, setUser] = React.useState(null)
 
@@ -25,6 +24,8 @@ function Question(){
 
         const [text, setText] = useState([]);
         const [items, setItems] = useState([]);
+        const [more, setMore] = useState([]);
+        const [name, setName] = useState([]);
 
 
         const fetchColors = async () => {
@@ -39,7 +40,7 @@ function Question(){
                 return Object.assign(res, { [key]: val })
               }
             }, {});
-          const bigData = await fetch(`http://localhost:3001/answer`,{
+          const bigData = await fetch(`http://localhost:3001/question/${location.state.Q_id}`,{
           method: 'get',
           headers:{
             'Content-Type': 'application/json'
@@ -48,9 +49,17 @@ function Question(){
         );
 
           const items = await bigData.json();
+          const more = items.answers;
+          const name = items.user;
+
           console.log(items);
-          console.log("question id is", location.state.Q_id)
+          console.log(more);
+          console.log(items.answers);
+          console.log(name.username);
+          console.log("question id is", location.state.Q_id);
           setItems(items);
+          setMore(more);
+          setName(name);
         }
 
         const askQuestion = async () => {
@@ -110,8 +119,9 @@ function Question(){
                 <section className="blur-banner">
 
                     <div className = "Qbox">
-                      <h2>  {location.state.Q_title} </h2>
-                      <p> {location.state.Q_text} </p>
+                      <h2>  {items.title} </h2>
+                      <p> {items.text} </p>
+                      <h1 className="submited"> submited by <b> {name.username} </b></h1>
                       <form>
                         <div className = "A_test">
                           <textarea
@@ -134,9 +144,9 @@ function Question(){
                     </div>
 
                     <div className="answer_links">
-                    {items.map(el => (
+                    {more.map(el => (
                         <div className="answer_box">
-                          <h2> {el.user.username} </h2>
+                          <h2> {el.id} </h2>
                           <p> {el.text} </p>
                         </div>
 

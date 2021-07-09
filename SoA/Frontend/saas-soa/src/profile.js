@@ -13,7 +13,8 @@ class Profile extends React.Component{
   constructor(props){
       super(props);
       this.state={
-          data: []
+          data: [],
+          data2: []
         }
   }
 
@@ -25,7 +26,18 @@ class Profile extends React.Component{
   }
 
   async componentDidMount(){
-          let res = await fetch(`http://localhost:3001/question`, {
+    let x = document.cookie
+          .split(';')
+          .reduce((res, c) => {
+            const [key, val] = c.trim().split('=').map(decodeURIComponent)
+            const allNumbers = str => /^\d+$/.test(str);
+            try {
+              return Object.assign(res, { [key]: allNumbers(val) ?  val : JSON.parse(val) })
+            } catch (e) {
+              return Object.assign(res, { [key]: val })
+            }
+          }, {});
+          let res = await fetch(`http://localhost:3001/user/${x.user_id}`, {
               method: 'get',
               headers:{
                 'Content-Type': 'application/json'
@@ -33,7 +45,8 @@ class Profile extends React.Component{
 
           });
           const json = await res.json();
-          this.setState({data: json});
+          this.setState({data: json.questions});
+          this.setState({data2: json.answers});
           console.log("HELLOOOO");
           console.log(this.state.data);
 }
@@ -81,7 +94,24 @@ class Profile extends React.Component{
                               }
                             }} className="Link_Style">
                           <h2>  {el.title} </h2>
-                          <p> {el.text} </p>
+                          <p> <b>Asked:</b> {el.text} </p>
+                        </Link>
+                        </div>
+
+                    ))}
+                    {this.state.data2.map(el => (
+                        <div className="station-box">
+
+                        <Link to ={{
+                              pathname: `Question_${el.id}`,
+                              state: {
+                                  Q_title: el.title,
+                                  Q_text: el.text,
+                                  Q_id: el.id
+                              }
+                            }} className="Link_Style">
+                          <h2>  {el.title} </h2>
+                          <p> <b>Answered:</b> {el.text} </p>
                         </Link>
                         </div>
 
