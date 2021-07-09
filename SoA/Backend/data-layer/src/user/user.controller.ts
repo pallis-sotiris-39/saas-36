@@ -10,7 +10,6 @@ export class UserController {
     return this.userService.findAll().catch(err => {
       throw new HttpException({
         message: err.message,
-
       }, err.statusCode)
     });
   }
@@ -20,7 +19,6 @@ export class UserController {
     return this.userService.findOne(+id).catch(err => {
       throw new HttpException({
         message: err.message,
-
       }, err.statusCode)
     });
   }

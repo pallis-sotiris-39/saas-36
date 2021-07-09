@@ -11,7 +11,6 @@ export class AnswerController {
     return this.answerService.create(createAnswerDto).catch(err => {
       throw new HttpException({
         message: err.message,
-
       }, err.statusCode)
     });
   }
@@ -21,7 +20,6 @@ export class AnswerController {
     return this.answerService.findAll().catch(err => {
       throw new HttpException({
         message: err.message,
-
       }, err.statusCode)
     });
   }
@@ -31,7 +29,6 @@ export class AnswerController {
     return this.answerService.findOne(+id).catch(err => {
       throw new HttpException({
         message: err.message,
-
       }, err.statusCode)
     });
   }
@@ -41,7 +38,6 @@ export class AnswerController {
     return this.answerService.remove(+id).catch(err => {
       throw new HttpException({
         message: err.message,
-
       }, err.statusCode)
     });
   }

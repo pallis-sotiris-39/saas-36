@@ -11,7 +11,6 @@ export class KeywordController {
     return this.keywordService.create(createKeywordDto).catch(err => {
       throw new HttpException({
         message: err.message,
-
       }, err.statusCode)
     });
   }
@@ -21,7 +20,6 @@ export class KeywordController {
     return this.keywordService.findAll().catch(err => {
       throw new HttpException({
         message: err.message,
-
       }, err.statusCode)
     });
   }
@@ -31,7 +29,6 @@ export class KeywordController {
     return this.keywordService.findOne(id).catch(err => {
       throw new HttpException({
         message: err.message,
-
       }, err.statusCode)
     });
   }
@@ -41,11 +38,8 @@ export class KeywordController {
     return this.keywordService.findOneWord(word).catch(err => {
         throw new HttpException({
           message: err.message,
-
         }, err.statusCode)
-      }
-
-    );
+      });
   }
 
   @Delete(':id')
@@ -53,7 +47,6 @@ export class KeywordController {
     return this.keywordService.remove(+id).catch(err => {
       throw new HttpException({
         message: err.message,
-
       }, err.statusCode)
     });
   }
