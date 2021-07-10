@@ -57,7 +57,7 @@ class Signup extends React.Component {
 
       try{
 
-          let res = await fetch(`http://localhost:3001/signup`, {
+          let res = await fetch(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/signup`, {
               mode: 'cors',
               method: 'post',
               headers:{
