@@ -11,6 +11,7 @@ import { withCookies, Cookies } from 'react-cookie';
 class Profileq extends React.Component{
 
   constructor(props){
+    window.scrollTo(0, 0);
       super(props);
       this.state={
           data: []
@@ -36,7 +37,7 @@ class Profileq extends React.Component{
               return Object.assign(res, { [key]: val })
             }
           }, {});
-          let res = await fetch(`http://localhost:3001/user/${x.user_id}`, {
+          let res = await fetch(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/user/${x.user_id}`, {
               method: 'get',
               headers:{
                 'Content-Type': 'application/json'

@@ -11,6 +11,7 @@ class Signup extends React.Component {
 
 
   constructor(props){
+    window.scrollTo(0, 0);
     console.log(document.cookie);
       super(props);
       this.state={

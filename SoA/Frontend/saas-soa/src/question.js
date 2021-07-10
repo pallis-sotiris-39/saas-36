@@ -13,6 +13,7 @@ import { withCookies, Cookies } from 'react-cookie';
 
 function Question(){
 
+        window.scrollTo(0, 0);
         const location = useLocation()
         const { fromNotifications } = location.state
         const [user, setUser] = React.useState(null)
@@ -40,7 +41,7 @@ function Question(){
                 return Object.assign(res, { [key]: val })
               }
             }, {});
-          const bigData = await fetch(`http://localhost:3001/question/${location.state.Q_id}`,{
+          const bigData = await fetch(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/question/${location.state.Q_id}`,{
           method: 'get',
           headers:{
             'Content-Type': 'application/json'
@@ -64,7 +65,7 @@ function Question(){
 
         const askQuestion = async () => {
           const date_create =  moment().format("DD-MM-YYYY hh:mm:ss")
-          const res = await fetch(`http://localhost:3001/answer`, {
+          const res = await fetch(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/answer`, {
               method: 'post',
               headers:{
                 'Content-Type': 'application/json',
@@ -92,10 +93,12 @@ function Question(){
           console.log(text);
           if (status == 201){
             console.log('yaaass');
+            window.location.reload();
           }
           else{
               this.resetForm();
               alert(result.msg);
+              window.location.reload();
           }
 
         }

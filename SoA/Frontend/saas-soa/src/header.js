@@ -37,7 +37,7 @@ constructor(props) {
    }
 
    keyPress(e){
-      if(e.keyCode == 13){
+      if(e.keyCode == 13 && e.target.value != ""){
         let keyword = e.target.value;
         console.log('value', keyword);
         this.props.history.push({
@@ -47,7 +47,14 @@ constructor(props) {
 
               }
             });
+            window.location.reload();
         }
+      else if (e.keyCode == 13 && e.target.value == "") {
+        this.props.history.push({
+              pathname: `all_questions`,
+            });
+            window.location.reload();
+      }
    }
 
   render(){

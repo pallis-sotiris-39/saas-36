@@ -13,6 +13,9 @@ import { withCookies, Cookies } from 'react-cookie';
 
 function Search(){
 
+
+
+        window.scrollTo(0, 0);
         const location = useLocation()
         const { fromNotifications } = location.state
         const [user, setUser] = React.useState(null)
@@ -25,6 +28,7 @@ function Search(){
         const [text, setText] = useState([]);
         const [items, setItems] = useState([]);
         const [more, setMore] = useState([]);
+        const [status, setStatus] = useState([]);
 
 
         const fetchColors = async () => {
@@ -39,7 +43,7 @@ function Search(){
                 return Object.assign(res, { [key]: val })
               }
             }, {});
-          const bigData = await fetch(`http://localhost:3001/keyword/${location.state.keyword}`,{
+          const bigData = await fetch(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/keyword/${location.state.keyword}`,{
           method: 'get',
           headers:{
             'Content-Type': 'application/json'
@@ -47,15 +51,22 @@ function Search(){
 
         );
 
+
+
           const items = await bigData.json();
           const more = items.questions;
+          const status = await bigData.status;
+          setStatus(status)
 
-          console.log(items);
-          console.log(more);
-          setItems(items);
-          setMore(more);
+          if(status==200){
+            console.log(items);
+            console.log(more);
+            setItems(items);
+            setMore(more);
+          }
+
+
         }
-
 
 
         let x = document.cookie
@@ -70,8 +81,7 @@ function Search(){
               }
             }, {});
 
-
-
+        if(status == 200){
           return (
               <main>
                 <section className="blur-banner">
@@ -99,6 +109,27 @@ function Search(){
                 </section>
               </main>
           );
+        }
+        else{
+          console.log("yaaas");
+          return (
+              <main>
+                <section className="blur-banner">
+
+                    <div className="search_links">
+
+                        <div className="station-box">
+                          <h2>  Oops, it seems this keyword does not exist! </h2>
+                          <p>  Try searching for another keyword, or search without one to view all questions. </p>
+                        </div>
+
+
+                    </div>
+
+                </section>
+              </main>
+          );
+        }
 
 
 }

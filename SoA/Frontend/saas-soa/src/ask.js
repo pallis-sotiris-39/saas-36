@@ -14,7 +14,7 @@ class Ask extends React.Component{
 
   constructor(props){
     console.log(document.cookie);
-
+    window.scrollTo(0, 0);
       super(props);
       this.state={
           title:'',
@@ -72,7 +72,7 @@ class Ask extends React.Component{
           }, {});
           console.log(x.userId);
 
-          let res = await fetch(`http://localhost:3001/question`, {
+          let res = await fetch(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/question`, {
               method: 'post',
               headers:{
                 'Content-Type': 'application/json',

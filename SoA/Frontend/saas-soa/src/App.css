@@ -228,7 +228,30 @@ header nav ul li a {
 
 /* HOME */
 
+.home-chart{
+  height: calc(100vh - 660px);
+  padding-bottom: 550px;
+}
+
+.chartDiv{
+  width: 600px;
+  height: 500px;
+  background: #111;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: #111;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
 .home-page{
+  height: calc(100vh - 330px);
   padding-top: 250px;
   padding-left: 100px;
   animation: glitch 1s linear infinite;
@@ -972,5 +995,11 @@ margin-bottom: 50px;
       .search_links{
       padding-top: 25px;
       padding-bottom: 50px;
+
+      }
+
+      .profile_links{
+      margin-top: -340px;
+      margin-bottom: 50px;
 
       }
