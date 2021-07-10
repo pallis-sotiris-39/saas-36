@@ -58,7 +58,7 @@ render(){
   console.log(this.state.data);
   let x = this.state.data.sort((a, b) => (a.length > b.length ? -1 : 1));
   console.log(x);
-  for(let i=0; i<this.state.data.length; i++){
+  for(let i=0; (i<this.state.data.length && i<10); i++){
     this.state.keywords[i]=this.state.data[i].keyword
     this.state.lengths[i]=this.state.data[i].length
   }
@@ -103,7 +103,14 @@ render(){
         }]
               }}
               options={{
-                maintainAspectRatio:false,
+                plugins:{
+                  title: {
+                    display: true,
+                    text: 'Most popular keywords'
+                  }
+                },
+                maintainAspectRatio:false
+
               }}
             />
           </div>

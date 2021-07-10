@@ -17,6 +17,7 @@ function Question(){
         const location = useLocation()
         const { fromNotifications } = location.state
         const [user, setUser] = React.useState(null)
+        let history = useHistory();
 
 
         useEffect(() => {
@@ -64,6 +65,18 @@ function Question(){
         }
 
         const askQuestion = async () => {
+          let x = document.cookie
+            .split(';')
+            .reduce((res, c) => {
+              const [key, val] = c.trim().split('=').map(decodeURIComponent)
+              const allNumbers = str => /^\d+$/.test(str);
+              try {
+                return Object.assign(res, { [key]: allNumbers(val) ?  val : JSON.parse(val) })
+              } catch (e) {
+                return Object.assign(res, { [key]: val })
+              }
+            }, {});
+          if(x.flag == true){
           const date_create =  moment().format("DD-MM-YYYY hh:mm:ss")
           const res = await fetch(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/answer`, {
               method: 'post',
@@ -100,7 +113,10 @@ function Question(){
               alert(result.msg);
               window.location.reload();
           }
-
+        }
+          else{
+            history.push("/login");
+          }
         }
 
 
