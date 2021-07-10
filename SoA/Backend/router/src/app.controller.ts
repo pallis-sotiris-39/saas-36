@@ -199,19 +199,6 @@ export class AppController {
     }
   }
 
-  @UseGuards(AuthGuard)
-  @Post('keyword')
-  async createK(@Body() createKeywordDto: CreateKeywordDto){
-    try {
-      return (await this.appService.attachKeyword(createKeywordDto)).data;
-    } catch (e) {
-      if (!e.response.status){
-        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
-      }
-      throw new HttpException(e.response.data.message, e.response.data.statusCode);
-    }
-  }
-
   @Get('user/:id')
   async getOneUser(@Param('id') id: string){
     try {
