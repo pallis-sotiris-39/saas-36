@@ -91,23 +91,6 @@ export class AppController {
     }
   }
 
-  @Post('keyword')
-  async attachKeyword
-  (
-    @Body('keyword') keyword: string,
-    @Body('questionid') questionid: number
-  ){
-    console.log(keyword, questionid)
-    try {
-      return (await this.appService.attachKeyword(keyword, questionid)).data;
-    } catch (e) {
-      if (!e.response.status){
-        throw new HttpException("Bad Request", HttpStatus.BAD_REQUEST)
-      }
-      throw new HttpException(e.response.data.message, e.response.data.statusCode);
-    }
-  }
-
   @Post('answer')
   async createA(@Body() createAnswerDto: CreateAnswerDto) {
     try {

@@ -11,8 +11,11 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
 const JWT_SECRET = 'our-biggest-secret'
 
 const {pool} = require('../bin/dbConfig')
+
+//Using bcrypt to encrypt the password
 const bcrypt = require('bcrypt')
 
+// Sign in strategy.
 passport.use('signin', new LocalStrategy(async function (username, password, done){
     try{
         const res = await pool.query('SELECT * FROM public.user WHERE username = $1', [username]);
@@ -32,6 +35,7 @@ passport.use('signin', new LocalStrategy(async function (username, password, don
     }
 }));
 
+// JWT strategy to authenticate tokens
 passport.use('token', new JWTStrategy(
     {
         secretOrKey: JWT_SECRET,
@@ -64,17 +68,25 @@ router.post('/signup',
             let email = req.body.email;
             let username = req.body.username;
             let password = req.body.password;
+
             if(!first_name || !last_name || !birthday || !email || !username || !password){
                 throw new Error('All fields are required.');
             }
+
+            // Check if email is in correct format
             let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
             if (!email.match(validRegex)){
                 throw new Error('Email is in wrong format.');
             }
+
+            // Check if birthday is in correct format
             if(!/^([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])\/([1-9]|0[1-9]|1[0-2])\/([1-2][0-9][0-9][0-9])$/.test(birthday)){
                 throw new Error('Birthday is in wrong format.');
             }
+            //Encrypt password
             let hashedPassword = await bcrypt.hash(password, 10);
+
+            //Check if user already exists
             let test = await pool.query('SELECT FROM public.user WHERE username = $1 OR email = $2', [username, email])
             if(test.rows.length > 0){
                 res.header('Access-Control-Allow-Origin', req.headers.origin);
@@ -82,6 +94,7 @@ router.post('/signup',
                     message: 'User already exists!'
                 })
             }
+            //If not, insert user in DB
             else{
                 let results = await pool.query('INSERT INTO public.user VALUES (DEFAULT, $1, $2, $3, $4, $5, $6)', [first_name, last_name, birthday, username, email, hashedPassword]);
                 res.header('Access-Control-Allow-Origin', req.headers.origin);

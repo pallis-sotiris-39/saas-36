@@ -37,23 +37,28 @@ export class AppService {
       }).toPromise();
   }
 
+  // GET Request to Data Layer without parameters.
   getQuestionManNoParams(url: string) {
     return this.httpService.get(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/` + url).toPromise();
   }
 
+  // GET Request to Data Layer with one parameter.
   getQuestionManOne(url: string, id: string) {
     return this.httpService.get(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/${url}/${id}`).toPromise();
   }
 
+  // DELETE request to Data Layer
   removeQuestionMan(url: string, id: string) {
     return this.httpService.delete(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/${url}/${id}`).toPromise();
   }
 
+  // POST request to create a question with a DTO
   createQ(createQuestionDto: CreateQuestionDto) {
     return this.httpService.post(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/question`,
       createQuestionDto).toPromise();
   }
 
+  //POST request to create an answer with a DTO
   createA(createAnswerDto: CreateAnswerDto) {
     return this.httpService.post(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/answer`,
       {
@@ -61,14 +66,6 @@ export class AppService {
         created: createAnswerDto.created,
         question: createAnswerDto.question,
         user: createAnswerDto.user
-      }).toPromise();
-  }
-
-  attachKeyword(createKeywordDto: CreateKeywordDto){
-    return this.httpService.post(`http://${process.env.QMAN_HOST}:${process.env.QMAN_PORT}/keyword`,
-      {
-        keyword: createKeywordDto.keyword,
-        questionid: createKeywordDto.questionid
       }).toPromise();
   }
 }
