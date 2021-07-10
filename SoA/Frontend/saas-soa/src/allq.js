@@ -8,16 +8,13 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import { Redirect, useHistory, useLocation } from "react-router-dom";
 import { withCookies, Cookies } from 'react-cookie';
 
-class Profile extends React.Component{
-
+class AllQuestions extends React.Component{
 
   constructor(props){
       window.scrollTo(0, 0);
       super(props);
       this.state={
-          data: [],
-          data2: [],
-          data3: []
+          data: []
         }
   }
 
@@ -40,7 +37,7 @@ class Profile extends React.Component{
               return Object.assign(res, { [key]: val })
             }
           }, {});
-          let res = await fetch(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/user/${x.user_id}`, {
+          let res = await fetch(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/question`, {
               method: 'get',
               headers:{
                 'Content-Type': 'application/json'
@@ -48,24 +45,10 @@ class Profile extends React.Component{
 
           });
           const json = await res.json();
-          this.setState({data: json.questions});
-          console.log(this.state.data);
-
-
-          let resA = await fetch(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/answer/user/${x.user_id}`, {
-              method: 'get',
-              headers:{
-                'Content-Type': 'application/json'
-              }
-
-          });
-          const json2 = await resA.json();
-          this.setState({data2: json2.question});
-          this.setState({data3: json2});
+          this.setState({data: json});
           console.log("HELLOOOO");
-
+          console.log(this.state.data);
 }
-
 
   render(){
 
@@ -83,21 +66,8 @@ class Profile extends React.Component{
           return (
               <main>
                 <section className="blur-banner">
-                    <div className ="profilebox">
-                            <p className="profilename">{x.username}</p>
-                            <Link to = '/profile'>
-                              <button className="questions">All activity</button>
-                            </Link>
-                            <Link to = '/profile_q'>
-                              <button className="questions">Questions asked</button>
-                            </Link>
-                            <Link to = '/profile_a'>
-                              <button className="questions">Questions answered</button>
-                            </Link>
-                              <button className="questions">Profile settings</button>
 
-                    </div>
-                    <div className="profile_links">
+                    <div className="search_links">
                     {this.state.data.map(el => (
                         <div className="station-box">
 
@@ -110,24 +80,7 @@ class Profile extends React.Component{
                               }
                             }} className="Link_Style">
                           <h2>  {el.title} </h2>
-                          <p> <b>Asked:</b> {el.text} </p>
-                        </Link>
-                        </div>
-
-                    ))}
-                    {this.state.data3.map(el => (
-                        <div className="station-box">
-
-                        <Link to ={{
-                              pathname: `Question_${el.question_fk}`,
-                              state: {
-                                  Q_title: el.question.title,
-                                  Q_text: el.question.text,
-                                  Q_id: el.question_fk
-                              }
-                            }} className="Link_Style">
-                          <h2>  {el.question.title} </h2>
-                          <p> <b>Answered:</b> {el.text} </p>
+                          <p><b>Asked:</b> {el.text} </p>
                         </Link>
                         </div>
 
@@ -140,4 +93,4 @@ class Profile extends React.Component{
 
 }
 
-export default observer(Profile);
+export default observer(AllQuestions);

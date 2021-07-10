@@ -10,6 +10,7 @@ import { withCookies, Cookies } from 'react-cookie';
 class Login extends React.Component {
 
   constructor(props){
+    window.scrollTo(0, 0);
     console.log(`http://${process.env.REACT_APP_ROUTER_HOST}:${process.env.REACT_APP_ROUTER_PORT}/signin`);
       super(props);
       this.state={
